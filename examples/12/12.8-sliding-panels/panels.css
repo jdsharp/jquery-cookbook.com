@@ -1,0 +1,75 @@
+/* `Panels
+----------------------------------------------------------------------------------------------------*/
+
+.panels,
+.panels a,
+.panels li {
+	height: 200px;
+	overflow: hidden;
+}
+
+.panels {
+	background: #ddd;
+	margin: 0 0 20px;
+	position: relative;
+	width: 900px;
+}
+
+.panels li {
+	float: left;
+	font-size: 100px;
+	line-height: 200px;
+	list-style: none;
+	text-align: center;
+	width: 180px;
+}
+
+.panels li.last,
+.panels li:last-child {
+	border: 0;
+	float: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.panels a {
+	background: url(../_common/radial.png) no-repeat 0 200px;
+	color: #666;
+	display: block;
+	text-decoration: none;
+	width: 100%;
+}
+
+.panels a:hover {
+	background-color: #bbb;
+	background-position: center top;
+	color: #000;
+	font-weight: bold;
+	text-shadow: #fff 0 5px 5px;
+}
+
+/* `Rounded Corners
+----------------------------------------------------------------------------------------------------*/
+
+.panels,
+.panels li:first-child,
+.panels li:first-child a {
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	-moz-border-radius-topleft: 20px;
+	-webkit-border-top-left-radius: 20px;
+	-moz-border-radius-bottomleft: 20px;
+	-webkit-border-bottom-left-radius: 20px;
+}
+
+.panels,
+.panels li:last-child,
+.panels li:last-child a {
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	-moz-border-radius-topright: 20px;
+	-moz-border-radius-bottomright: 20px;
+	-webkit-border-top-right-radius: 20px;
+	-webkit-border-bottom-right-radius: 20px;
+}

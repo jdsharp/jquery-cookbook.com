@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en-us" />
+	<title>Dialog Demo</title>
+	
+	<style type="text/css">
+		table {
+			border-collapse: collapse;
+			width: 500px;
+		}
+		th, td {
+			border: 1px solid #000;
+			padding: 2px 5px;
+		}
+		.dialog {
+			position: absolute;
+			background-color: #fff;
+			border: 1px solid #000;
+			width: 400px;
+			padding: 10px;
+		}
+		.dialog h1 {
+			margin: 0 0 10px;
+		}
+		.dialog .close {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+		}
+	</style>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js">',
+	</script>
+	
+	<script type="text/javascript">
+	
+		$(document).ready(function() {
+			function close() {
+				dialog.hide();
+				$('#add-user').focus();
+			}
+			
+			var title = $('<h1>Add User</h1>')
+					.attr('id', 'add-user-title'),
+				
+				closeButton = $('<button>close</button>')
+					.addClass('close')
+					.click(close)
+					.appendTo(title),
+				
+				content = $('<div/>')
+					.load('add.html'),
+				
+				dialog = $('<div/>')
+					.attr({
+						role: 'dialog',
+						'aria-labelledby': 'add-user-title'
+					})
+					.addClass('dialog')
+					.keypress(function(event) {
+						if (event.keyCode == 27) {
+							close();
+						}
+					})
+					.append(title)
+					.append(content)
+					.hide()
+					.appendTo('body');
+			
+			$('#add-user').click(function() {
+				var height = dialog.height(),
+					width = dialog.width();
+				
+				dialog
+					.css({
+						top: ($(window).height() - height) / 2 + $(document).scrollTop(),
+						left: ($(window).width() - width) / 2 + $(document).scrollLeft()
+					})
+					.show();
+				
+				dialog.find('#username').focus();
+				
+				return false;
+			});
+		});
+		
+	</script>
+</head>
+<body>
+
+<h1>Users</h1>
+
+<a id="add-user" href="add.html">add a user</a>
+
+<table>
+<thead>
+	<tr>
+		<th>User</th>
+		<th>First Name</th>
+		<th>Last Name</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td>jsmith</td>
+		<td>John</td>
+		<td>Smith</td>
+	</tr>
+	<tr>
+		<td>mrobertson</td>
+		<td>Mike</td>
+		<td>Robertson</td>
+	</tr>
+	<tr>
+		<td>arodriguez</td>
+		<td>Angela</td>
+		<td>Rodriguez</td>
+	</tr>
+	<tr>
+		<td>lsamseil</td>
+		<td>Lee</td>
+		<td>Samseil</td>
+	</tr>
+	<tr>
+		<td>lweick</td>
+		<td>Lauren</td>
+		<td>Weick</td>
+	</tr>
+</tbody>
+</table>
+
+</body>
+</html>

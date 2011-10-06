@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jQuery Cookbook - Ch.08 - Custom "selected" event</title>
+	<link rel="stylesheet" type="text/css" href="../../common.css" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script type="text/javascript" src="../../jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="jquery.selected.event.js"></script>
+</head>
+<body>
+	<h1>Custom "selected" event</h1>
+
+	<table>
+		<tbody>
+			<tr class="disabled"><td>Disabled row</td></tr>
+			<tr><td>Selectable row</td></tr>
+			<tr><td>Selectable row</td></tr>
+			<tr><td>Selectable row</td></tr>
+			<tr class="disabled"><td>Disabled row</td></tr>
+			<tr class="disabled"><td>Disabled row</td></tr>
+			<tr><td>Selectable row</td></tr>
+			<tr><td>Selectable row</td></tr>
+		</tbody>
+	</table>
+
+	<script type="text/javascript">
+	$('tr').bind('selected',function(){
+		$('tr').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	</script>
+</div>
+</body>
+</html>

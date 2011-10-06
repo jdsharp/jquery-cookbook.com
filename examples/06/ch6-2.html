@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Chapter 6 - Recipe 2</title>
+<link rel="stylesheet" href="chapter6.css" type="text/css">
+<style type="text/css">
+  .box {
+    background-color: #fff;
+    position: relative;
+  }
+
+  #revealUp {
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    display: none;
+    bottom: 0;
+    background-color: #c00;
+  }
+  
+</style>
+<script src="jquery-latest.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    // animates until bottom is completely visible
+    // $('#animate').click(function () {
+    //   $('#revealUp').slideToggle();
+    // });
+
+    // animates until the element's top is completely visible
+    $('#animate').click(function () {
+      var $box = $('#revealUp');
+      
+      if ($box.height() > 0) {
+        $box.animate({ height : 0 });
+      } else {
+        $box.animate({ height : '100%' });
+      }
+    });
+  });
+</script>
+</head>
+<body id="single">
+  <h2>Making elements visible by sliding them up</h2>
+  <input type="button" id="animate" value="animate" />
+  <div class="box">
+    <div id="revealUp">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
+         eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>      
+    </div>
+  </div>
+</body>
+</html>

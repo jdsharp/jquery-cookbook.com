@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>What's wrong with $(this)? - jQuery Cookbook</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en-us" />
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js">',
+	</script>
+	
+	<style type="text/css">
+		a.clicked { background-color:#FCC; }
+	</style>
+	
+	<script type="text/javascript">
+		
+		function clicked( it ) {
+			alert( 'it.id is: ' + it.id );  // 'test'
+			alert( 'this.id is: ' + this.id );  // undefined
+			alert( 'this === window is: ' + ( this === window ) );  // true (what?)
+		}
+		
+		function Foo( value ) {
+			this.value = value;
+		}
+		
+		Foo.prototype.alert = function() {
+			alert( this.value );
+		};
+		
+		$(document).ready( function() {
+			
+			$('.object').click( function() {
+				var foo = new Foo( 'bar' );
+				foo.alert();  // 'bar'
+				return false;
+			});
+			
+			$('.clicky-bad').click( function() {
+				$(this).addClass('clicked');
+				setTimeout( function() {
+					$(this).removeClass('clicked');
+				}, 1000 );
+				return false;
+			});
+			
+			$('.clicky-good').click( function() {
+				var element = this;
+				$(element).addClass('clicked');
+				setTimeout( function() {
+					$(element).removeClass('clicked');
+				}, 1000 );
+				return false;
+			});
+			
+			$('.clicky-best').click( function() {
+				var $element = $(this);
+				$element.addClass('clicked');
+				setTimeout( function() {
+					$element.removeClass('clicked');
+				}, 1000 );
+				return false;
+			});
+			
+		});
+		
+	</script>
+
+</head>
+<body style="">
+	
+	<div style="margin:8px;">
+		<a href="#" class="object">Test object</a>
+	</div>
+	
+	<div style="margin:8px;">
+		<a href="#" id="test" onclick="clicked(this);">Test onclick</a>
+	</div>
+	
+	<div style="margin:8px;">
+		<a href="#" class="clicky-bad">Test jQuery - bad</a>
+	</div>
+	
+	<div style="margin:8px;">
+		<a href="#" class="clicky-good">Test jQuery - good</a>
+	</div>
+	
+	<div style="margin:8px;">
+		<a href="#" class="clicky-best">Test jQuery - best</a>
+	</div>
+	
+</body>
+</html>

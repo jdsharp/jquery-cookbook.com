@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jQuery Cookbook - Ch.07 - Reusing a handler function with different data</title>
+	<link rel="stylesheet" type="text/css" href="../../common.css" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script type="text/javascript" src="../../jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="../jquery.log.js"></script>
+</head>
+<body>
+	<h1>Reusing a handler function with different data</h1>
+	<div id="buttons">
+		<div id="button1" class="button">&nbsp;</div>
+		<div id="button2" class="button">&nbsp;</div>
+		<div id="button3" class="button">&nbsp;</div>
+	</div>
+
+	<div id="panel1"class="panel">
+		<br /><br /><br />
+		1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+	</div>
+	<div id="panel2"class="panel">
+		<br /><br /><br />
+		2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+	</div>
+	<div id="panel3"class="panel">
+		<br /><br /><br />
+		3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+	</div>
+	
+	<p id="desc"></p>
+	
+	<script type="text/javascript">
+	(function($){
+		function buttonClicked(e){
+			$('div.panel').hide();
+			$('#panel'+e.data.panel).show();
+			$('#desc').text('You clicked the '+e.data.color+' button');
+		}
+
+		$('#button1').bind('click',{panel:1, color:'red'}, buttonClicked);
+		$('#button2').bind('click',{panel:2, color:'blue'}, buttonClicked);
+		$('#button3').bind('click',{panel:3, color:'green'}, buttonClicked);
+		
+		$('#button1').click();
+	})(jQuery);
+	</script>
+</div>
+</body>
+</html>

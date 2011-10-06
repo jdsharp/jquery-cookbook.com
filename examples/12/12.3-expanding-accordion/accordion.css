@@ -1,0 +1,94 @@
+/* `Accordion Specific
+----------------------------------------------------------------------------------------------------*/
+
+.accordion {
+	background: #fff;
+	margin: 0 0 20px;
+	padding: 1px 0 0;
+	width: 250px;
+}
+
+.accordion dt,
+.accordion dd {
+	border: 1px solid #999;
+	margin: -1px 0 0;
+}
+
+.accordion dt a {
+	border: 1px solid #fff;
+	background: #ccc url(../_common/gradient.gif) repeat-x;
+	color: #333;
+	display: block;
+	padding: 5px 0 5px 20px;
+	position: relative;
+	text-decoration: none;
+}
+
+/* For IE6. */
+* html .accordion dt a {
+	height: 1%;
+}
+
+.accordion dt a:hover {
+	background: #666;
+	color: #fff;
+}
+
+.accordion dt a span {
+	background: url(../_common/arrow.gif) no-repeat;
+	font-size: 0;
+	overflow: hidden;
+	position: absolute;
+	top: 8px;
+	left: 5px;
+	width: 9px;
+	height: 9px;
+}
+
+.accordion dt a.accordion_expanded span {
+	background-position: 0 -9px;
+}
+
+.accordion dt a:hover span {
+	background-position: -9px 0;
+}
+
+.accordion dt a.accordion_expanded:hover span {
+	background-position: -9px -9px;
+}
+
+.accordion dd {
+	color: #666;
+	font-size: 11px;
+	overflow: hidden;
+	height: 235px;
+}
+
+.accordion dd p {
+	margin: 0;
+	padding: 10px 10px 0;
+}
+
+/* `Rounded Corners
+----------------------------------------------------------------------------------------------------*/
+
+.accordion dt:first-child,
+.accordion dt:first-child a {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+}
+
+.accordion dd:last-child,
+.accordion dt.last,
+.accordion dt.last a {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+}

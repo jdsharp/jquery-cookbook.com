@@ -1,0 +1,7 @@
+.ui-watermark-container {
+	position: relative;
+}
+.ui-watermark-label {
+	position: absolute;
+	cursor: text;
+}

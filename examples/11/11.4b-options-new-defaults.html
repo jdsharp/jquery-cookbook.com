@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jQuery Cookbook - 11.4 Passing options into your Plugin</title>
+	<link rel="stylesheet" type="text/css" href="../common.css" />
+	<link rel="stylesheet" type="text/css" href="plugins.css" />
+	<script type="text/javascript" src="../jquery-1.3.2.min.js"></script>
+</head>
+<body>
+	<h1>Passing options into your Plugin</h1>
+
+  <input type="submit" id="one" name="one" value="Redefine Defaults" />
+
+  <p>Starship Enterprise</p>
+  <p>Battlestar Galactica</p>
+  <p>Serenity</p>
+
+  <script type="text/javascript">
+    jQuery(document).ready(function() {
+      jQuery('#one').click(function() {
+        // Redefine our defaults
+        jQuery.fn.pulse.defaults = { 
+          speed: "fast",
+          pulses: 4,
+          fadeLow: 0.2,
+          fadeHigh: 1
+        };
+        // This call will use the new defaults
+        jQuery('p').pulse();
+      });
+    });
+
+    jQuery.fn.pulse = function(options) {
+      // Merge passed options with defaults
+      var opts = jQuery.extend({}, jQuery.fn.pulse.defaults, options);
+
+      return this.each(function() {
+        // Pulse!
+        for(var i = 0;i<opts.pulses;i++) {
+          jQuery(this).fadeTo(opts.speed,opts.fadeLow).fadeTo(opts.speed,opts.fadeHigh);
+        }
+
+        // Reset to normal
+        jQuery(this).fadeTo(opts.speed,1); 
+      });
+    };
+
+    // Original Pulse plugin default options
+    jQuery.fn.pulse.defaults = { 
+      speed: "slow",
+      pulses: 2,
+      fadeLow: 0.2,
+      fadeHigh: 1
+    };
+
+  </script>
+</body>
+</html>

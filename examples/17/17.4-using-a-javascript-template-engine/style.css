@@ -1,0 +1,27 @@
+.book { 
+    width: 500px;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #555; 
+    margin: 15px; }
+.book .author-list {
+    float: right; 
+    margin: 0px 0px 10px 0px; }
+.book p {
+    margin: 0px; }
+.book li {
+    display: block;
+    float: none;
+    border-left: 1px solid #777;
+    border-bottom: 1px solid #777; 
+    padding-left: 3px;}
+.book .title {
+    font-weight: bold; }
+.book .book-footer {
+    padding: 3px 3px 0px 3px;
+    margin-top: 5px;
+    background-color: #ddd;
+    clear: both; }
+.book .rating-div {
+    float: right; }
+.clear {
+    clear: both; }

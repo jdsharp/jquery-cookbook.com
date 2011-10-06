@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="imagetoolbar" content="false" />
+	<title>jQuery Cookbook - Ch.09.11 - Validating forms</title>
+
+	<!-- NOT REQUIRED. Just making things look prettier. -->
+	<link rel="stylesheet" type="text/css" href="basic.css" />
+
+	<!-- NOT REQUIRED. Just making things look prettier. -->
+	<style type="text/css" title="text/css">
+		form {
+			padding: 1em 0;
+		}
+		div.question {
+			padding: 1em 0;
+		}
+		div.errorMessage {
+			display: none;
+		}
+		div.showErrorMessage {
+			display: block;
+			color: #f00;
+			font-style: italic;
+			font-weight: bold;
+		}
+		label.error {
+			color: #f00;
+			font-style: italic;
+		}
+	</style>
+
+	<!-- REQUIRED -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
+	<!-- REQUIRED -->
+	<script type="text/javascript">
+		// when the HTML DOM is ready
+		$(document).ready(function(){
+
+			// find the form and hijack the submit event
+			$('form').submit(function(event){
+				
+				var isErrorFree = true;
+				
+				// iterate through required form elements and check to see if they are valid
+				$('input.required, select.required, textarea.required',this).each(function(){
+					if ( validateElement.isValid(this) == false ){
+						isErrorFree = false;
+					};
+				});
+				
+				// AJAX alternatives:
+				// event.preventDefault();
+				// if (isErrorFree){ $.get( url, data, callback, type ) }
+				// if (isErrorFree){ $.post( url, data, callback, type ) }
+				// if (isErrorFree){ $.ajax( options ) }
+
+				if (isErrorFree){
+					alert('woohoo! what great looking data!');
+				}
+				
+				return isErrorFree;
+				
+			}); // close .submit()
+			
+			var validateElement = {
+				stripWhitespace : function(str){
+					return str.replace(/\s/g,'');
+				},
+				isValid:function(element){
+					
+					var isValid = true;
+					var $element = $(element);
+					var id = $element.attr('id');
+					var name = $element.attr('name');
+					var value = $element.val();
+			
+					// <input> uses type attribute as written in tag
+					// <textarea> has intrinsic type of 'textarea'
+					// <select> has intrinsic type of 'select-one' or 'select-multiple'
+					var type = $element[0].type.toLowerCase();
+					
+					switch(type){
+						case 'text':
+						case 'textarea':
+						case 'password':
+							if ( this.stripWhitespace(value).length == 0 ){ isValid = false; }
+							//if ( value.length == 0 || value.replace(/\s/g,'').length == 0 ){ isValid = false; }
+							break;
+						case 'select-one':
+						case 'select-multiple':
+							if( !value ){ isValid = false; }
+							break;
+						case 'checkbox':
+						case 'radio':
+							if( $('input[name="' + name + '"]:checked').length == 0 ){ isValid = false; };
+							break;
+					} // close switch()
+			
+					// instead of $(selector).method we are going to use $(selector)[method]
+					// choose the right method, but choose wisely
+					var method = isValid ? 'removeClass' : 'addClass';
+			
+					// show error message [addClass]
+					// hide error message [removeClass]
+					$('#errorMessage_' + name)[method]('showErrorMessage');
+
+					// only updates element-specific label onSubmit, will not work onChange with radio buttons
+					// $('label[for="' + id + '"]')[method]('error');
+
+					if ( type == 'checkbox' || type == 'radio' ) {
+					
+						// if radio button or check box, find all inputs with the same name
+						$('input[name="' + name + '"]').each(function(){
+							// update each input elements <label> tag (this == <input>)
+							$('label[for="' + this.id + '"]')[method]('error');
+						});
+					
+					} else {
+						// all other elements just update one <label>
+						$('label[for="' + id + '"]')[method]('error');
+					
+					}
+
+					// after initial validation, allow elements to re-validate on change
+					$element
+						.unbind('change.isValid')
+						.bind('change.isValid',function(){ validateElement.isValid(this); });			
+
+					return isValid;
+			
+				} // close validateElement.isValid()
+			}; // close validateElement object
+
+		}); // close ready()
+	</script>
+</head>
+<body>
+
+<div id="container">
+	<h1>Validating forms</h1>
+
+		<form action="#">
+		
+			<!-- TEXT -->
+			<div class="question">
+				<label for="t">Username</label>
+				<input id="t" name="user" type="text" class="required" />
+				<div id="errorMessage_user" class="errorMessage">Please enter your username.</div>
+			</div>
+		
+			<!-- PASSWORD -->
+			<div class="question">
+				<label for="p">Password</label>
+				<input id="p" name="pass" type="password" class="required" />
+				<div id="errorMessage_pass" class="errorMessage">Please enter your password.</div>
+			</div>
+		
+			<!-- SELECT ONE -->
+			<div class="question">
+				<label for="so">Favorite Color</label>
+				<select id="so" name="color" class="required">
+					<option value="">Select a Color</option>
+					<option value="ff0000">Red</option>
+					<option value="00ff00">Green</option>
+					<option value="0000ff">Blue</option>
+				</select>
+				<div id="errorMessage_color" class="errorMessage">Please select your favorite color.</div>
+			</div>
+		
+			<!-- SELECT MULTIPLE -->
+			<div class="question">
+				<label for="sm">Favorite Foods</label>
+				<select id="sm" size="3" name="foods" multiple="multiple" class="required">
+					<option value="pizza">Pizza</option>
+					<option value="burger">Burger</option>
+					<option value="salad">Salad</option>
+				</select>
+				<div id="errorMessage_foods" class="errorMessage">Please choose your favorite foods.</div>
+			</div>
+		
+			<!-- RADIO BUTTONS -->
+			<div class="question">
+				<span>Writing Hand:</span>
+				<input id="r1" type="radio" name="hand" class="required"/>
+				<label for="r1">Left</label>
+				<input id="r2" type="radio" name="hand" class="required" />
+				<label for="r2">Right</label>
+				<div id="errorMessage_hand" class="errorMessage">Please select what hand you write with.</div>
+			</div>
+		
+			<!-- TEXTAREA -->
+			<div class="question">
+				<label for="tt">Comments</label>
+				<textarea id="tt" name="comments" class="required"></textarea>
+				<div id="errorMessage_comments" class="errorMessage">Please tell us what you think.</div>
+			</div>
+		
+			<!-- CHECKBOX -->
+			<div class="question">
+				<input id="c" type="checkbox" name="legal" class="required" />
+				<label for="c">I agree with the terms and conditions</label>
+				<div id="errorMessage_legal" class="errorMessage">Please check the box!</div>
+			</div>
+			
+			<input type="submit" value="Continue" />
+		
+		</form>
+
+</div>
+
+</body>
+</html>

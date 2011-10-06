@@ -1,0 +1,7 @@
+.tree ul {
+	display: none;
+}
+
+.tree .tree_expanded {
+	display: block;
+}

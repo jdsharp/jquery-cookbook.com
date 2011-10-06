@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>13.3 - Initializing a jQuery UI plugin with default options</title>
+	<link rel="stylesheet" type="text/css" href="../common.css" />
+	<link rel="stylesheet" type="text/css" href="13.css" />
+
+	<link rel="stylesheet" type="text/css" href="themes/base/jquery-ui.css" />
+	<script type="text/javascript" src="../jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="ui/jquery-ui.js"></script>
+
+	<script type="text/javascript">
+	$(function() {
+	    $('#topnav').tabs();
+	});
+	</script>
+
+	<script type="text/javascript">
+	$(function() {
+	    $('#drg div').draggable();
+	});
+	</script>
+</head>
+<body>
+	<h1>13.3 - Initializing a jQuery UI plugin with default options</h1>
+	<dl>
+		<dt>Default Tabs</dt>
+		<dd>
+			<div id="topnav">
+				<ul>
+					<li><a href="#home">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#contact-us">Contact Us</a></li>
+				</ul>
+				<div id="home">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				<div id="about">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
+				<div id="contact-us">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+			</div>
+		</dd>
+		<dt>Default Draggable</dt>
+		<dd id="drg">
+			<div>A simple DIV</div>
+		</dd>
+	</dl>
+</body>
+</html>

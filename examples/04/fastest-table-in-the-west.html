@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+	<title>Table loader - fast</title>
+	
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
+	<script type="text/javascript" src="tools.js"></script>
+	
+	<script type="text/javascript">
+	
+		function esc( text ) {
+			return text
+				.replace( '&', '&amp;' )
+				.replace( '<', '&lt;' )
+				.replace( '>', '&gt;' );
+		}
+		
+		$(document).ready( function() {
+			
+			time( '$(ready)' );
+			
+			function fillTable( names ) {
+				var e = esc; 
+				var html = [], h = -1;
+				html[++h] = '<table id="nameTable">';
+				html[++h] = '<tbody>';
+				for( var name, i = -1;  name = names[++i]; ) {
+					html[++h] = '<tr><td class="name">';
+					html[++h] =     e(name.first);
+					html[++h] =     ' ';
+					html[++h] =     e(name.last);
+					html[++h] = '</td><td class="address">';
+					html[++h] =     e(name.street);
+					html[++h] =     '<br />';
+					html[++h] =     e(name.city);
+					html[++h] =     ', ';
+					html[++h] =     e(name.state);
+					html[++h] =     ' ';
+					html[++h] =     e(name.zip);
+					html[++h] = '</td></tr>';
+				}
+				html[++h] = '</tbody>';
+				html[++h] = '</table>';
+				
+				$('#container')[0].innerHTML = html.join('');
+			}
+			
+			$.getJSON( 'names/names-1000.json', function( json ) {
+				time( 'getJSON' );
+				fillTable( json.names );
+				time( 'fillTable' );
+				time.done( '#log' );
+			});
+		});
+		
+	</script>
+
+</head>
+<body>
+	
+	<div id="log">
+		Loading&#8230;
+	</div>
+
+	<div id="container">
+	</div>
+
+</body>
+</html>

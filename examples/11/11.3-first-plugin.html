@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jQuery Cookbook - 11.3 Writing your first jQuery Plugin</title>
+	<link rel="stylesheet" type="text/css" href="../common.css" />
+	<script type="text/javascript" src="../jquery-1.3.2.min.js"></script>
+</head>
+<body>
+	<h1>Writing your first jQuery Plugin</h1>
+
+  <input type="submit" id="shop" name="shop" value="Go Shopping" />
+
+  <h3>Shopping List</h3>
+  <ul id="shoppinglist">
+    <li>Banana's</li>
+    <li>Bread</li>
+    <li>Milk</li>
+    <li>Ice Cream</li>
+  </ul>
+
+  <input type="submit" id="checkout" name="checkout" value="Checkout" />
+
+  <script type="text/javascript">
+    jQuery(document).ready(function() {
+      jQuery('#shop').click(function() {
+        jQuery('#shoppinglist > li').goShop();
+      });
+      jQuery('#checkout').click(function() {
+        jQuery.checkout();
+      });
+    });
+
+    jQuery.fn.goShop = function() {
+      return this.each(function() {
+        jQuery('body').append('<div>Purchase: ' + this.innerHTML + '</div>');
+      });
+    };
+
+    jQuery.checkout = function () {
+      jQuery('body').append('<h1>Checkout Successful</h1>');
+    };
+  </script>
+</body>
+</html>

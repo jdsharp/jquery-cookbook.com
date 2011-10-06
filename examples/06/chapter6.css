@@ -1,0 +1,196 @@
+/* simplistic reset */
+* {
+	margin: 0;
+	padding: 0
+}
+
+body {
+  font: 1em/1.5em Helvetica, Arial, sans-serif;
+/*  margin: 20px;*/
+}
+
+h1 {
+  margin: 20px 10px;
+}
+
+h2 {
+  font-size: 120%;
+  margin-left: 10px;
+}
+
+select {
+  margin: 10px auto;
+  display: block;
+  font-size: 16px;
+}
+
+input {
+  font-size: 16px;
+  padding: 5px;
+  width: 150px;
+  padding: 1px;
+  display: block;
+  margin: 10px auto;
+}
+
+#single input {
+  margin: 10px;
+}
+
+#controls {
+  padding: 10px;
+  float: left;
+  border: 1px dashed #ccc;
+  width: 200px;
+  margin: 0 20px;
+}
+
+#effects {
+  margin: 20px 20px 20px 260px;
+  background: #eee;
+  border: 1px solid #ccc;
+  min-width: 341px;
+}
+
+.effect {
+  position: relative;
+  float: left;
+}
+
+.absolute {
+  width: 170px;
+  height: 206px;
+}
+
+.absolute .box {
+  position: absolute;
+  top: 36px;
+}
+
+.box, .boxWrapper {
+  height: 148px;
+  width: 148px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.box {
+  background-color: #c00;
+}
+
+.boxWrapper {
+  position: relative;
+  border: 1px dotted #ccc;
+}
+
+.boxWrapper .box {
+  margin: 0;
+  border: 0;
+}
+
+#box {
+  background-color: #c00;
+}
+
+#boxhide {
+  background-color: #00c;
+}
+
+#boxpause {
+  background-color: #0cc;
+}
+
+#scroller { 
+  overflow: auto;
+/*  border: 1px dotted #ccc;*/
+  background: #fff;
+}
+
+.box p { 
+  margin: 14px 5px;
+  color: #fff;
+  font-size: 90%;
+}
+
+#scroller p {
+  color: #000;
+}
+
+.box p:first-child {
+  margin-top: 5px;
+}
+
+#up {
+  position: absolute;
+  bottom: 0;
+  background: #0c0;
+  height: 0;
+  opacity: 0;
+  display: none;
+}
+
+#uiAddClassBox {
+  background-color: #FA9201;
+}
+
+#shakeLongBox {
+  background: #9C9AFA;
+}
+
+#explodeBox {
+  background: #EF2DFA;
+}
+
+#sequenceEffect .box {
+  background: #F6FA71;
+}
+
+#sequenceEffect .box p {
+  color: #000;
+}
+
+#hoverBox {
+  opacity: 0;
+  -moz-opacity: 0;
+  filter:alpha(opacity=0);
+  background: #5038FA;
+}
+
+#accordionWrapper {
+  margin: 10px;
+}
+
+#accordionWrapper h3 {
+  text-indent: -9999px;
+  height: 150px;
+  width: 50px;
+  float: left;
+}
+
+#accordionWrapper .red {
+  background: #c00 url(images/red.png) no-repeat;
+}
+
+#accordionWrapper .green {
+  background: #0c0 url(images/green.png) no-repeat;
+}
+
+#accordionWrapper .blue {
+  background: #00c url(images/blue.png) no-repeat;
+}
+
+#accordionWrapper div.box {
+  float: left;
+  height: 150px;
+  width: 150px;
+  border: 0;
+  margin: 0;
+  background-image: none;
+}
+
+
+.clear {
+  padding-bottom: 10px;
+  clear: both;
+}

@@ -1,0 +1,1 @@
+(function($){	$.broadcast = function(name){		var old = $.fn[name];		$.fn[name] = function(){			var e = $.Event('before-'+name);						e.args = $.makeArray(arguments);			this.trigger(e);						e.ret = old.apply(this, e.args);			e.type = 'after-'+name;			this.trigger(e);			return e.ret;		};	};})(jQuery);

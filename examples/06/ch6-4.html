@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Chapter 6 - Recipe 4</title>
+<link rel="stylesheet" href="chapter6.css" type="text/css">
+<style type="text/css" media="screen">
+/*  .box {
+    display: none;
+  }*/
+</style>
+<script src="jquery-latest.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+  $('#animate').click(function () {
+    $('.box').animate({ opacity: 'toggle', height: 'toggle' });
+
+    return false;
+  });
+});</script>
+</head>
+<body id="single">
+  <h1>Simultaneously sliding and fading elements</h1>
+  <input type="button" id="animate" value="animate" />
+  <div class="box">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
+       eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>      
+  </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<link rel="stylesheet" href="ui.core.css" />
+    	<link rel="stylesheet" href="ui.datepicker.css" />
+    	<link rel="stylesheet" href="ui.theme.css" />
+        <script src="../../jquery-1.3.2.min.js"></script>
+        <script src="ui.core.js"></script>
+        <script src="ui.datepicker.js"></script>
+        <script>
+            jQuery(document).ready(function($){
+                $("#startAt").datepicker();
+            });
+        </script>
+    </head>
+    <body>
+        <form>
+            <label for="startAt">Start at:</label>
+            <input type="text" name="startAt" id="startAt" />
+        </form>
+    </body>
+</html>

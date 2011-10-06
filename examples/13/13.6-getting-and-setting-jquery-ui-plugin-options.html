@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>13.6 - Getting and setting jQuery UI plugin options</title>
+	<link rel="stylesheet" type="text/css" href="../common.css" />
+	<link rel="stylesheet" type="text/css" href="13.css" />
+
+	<link rel="stylesheet" type="text/css" href="themes/base/jquery-ui.css" />
+	<script type="text/javascript" src="../jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="ui/ui.core.js"></script>
+
+	<!-- 
+	***
+	Note: In writing this chapter, this author found a bug in the latest stable
+	version of the Accordion option active getter and setter. This will be fixed in
+	the 1.8 version. The latest preview release, 1.8a1, containing this fix, is
+	included below, for purposes of this sample page.
+	***
+	-->
+
+	<script type="text/javascript" src="13.6-ui.accordion.js"></script>
+
+	<script type="text/javascript">
+	$(function() {
+
+		$('#myDiv').accordion({
+			active: 1
+		});
+
+		$('#getter').click(function() {
+			alert($('#myDiv').accordion('option', 'active'));
+		});
+
+		$('#setter').click(function() {
+			$('#myDiv').accordion('option', 'active', 3);
+		});
+		
+		$('#multi-setter').click(function() {
+			$('#myDiv').accordion('option', {
+				active: 2,
+				collapsible: true
+			});
+		});
+
+	});
+	</script>
+</head>
+<body>
+	<h1>13.6 - Getting and setting jQuery UI plugin options</h1>
+	<dl>
+		<dt>Accordion</dt>
+		<dd>
+			<div id="myDiv">
+				<h3><a href="#">First</a></h3>
+				<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				<h3><a href="#">Second</a></h3>
+				<div>Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
+				<h3><a href="#">Third</a></h3>
+				<div>Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+				<h3><a href="#">Fourth</a></h3>
+				<div>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</div>
+			</div>
+		</dd>
+		<dt>Get</dt>
+		<dd>
+			<button id="getter">$('#myDiv').accordion('option', 'active')</button>
+		</dd>
+		<dt>Set</dt>
+		<dd>
+			<button id="setter">$('#myDiv').accordion('option', 'active', 3)</button>
+		</dd>
+		<dt>Multi-Set</dt>
+		<dd>
+			<button id="multi-setter">
+				$('#myDiv').accordion('option', {
+    				active: 2,
+    				collapsible: true
+				});
+			</button>
+		</dd>
+	</dl>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Chapter 2 - Recipe 8 - jQuery does not provide functionality that is required</title>
+    <style type="text/css">
+        .pics {  
+            height:  232px;  
+            width:   232px;  
+            padding: 0;  
+            margin:  0;  
+        } 
+ 
+        .pics img {  
+            padding: 15px;  
+            border:  1px solid #ccc;  
+            background-color: #eee;  
+            width:  200px; 
+            height: 200px; 
+            top:  0; 
+            left: 0 
+        } 
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/2.8/jquery.cycle.all.min.js?v2.60"></script>
+    <script type="text/javascript">
+    <!--
+        (function($){
+            $(document).ready(function(){
+                $('.pics').cycle('fade');
+            });
+        })(jQuery);
+    //-->
+    </script>
+    
+</head>
+<body>
+    <div class="pics"> 
+        <img src="images/2.8/beach1.jpg" width="200" height="200" alt="Beach 1" /> 
+        <img src="images/2.8/beach2.jpg" width="200" height="200" alt="Beach 2" /> 
+        <img src="images/2.8/beach3.jpg" width="200" height="200" alt="Beach 3" /> 
+    </div> 
+</body>
+</html>

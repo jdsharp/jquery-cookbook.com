@@ -1,0 +1,29 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Chapter 2 - Recipe 9 - Determining the exact query that was used</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript">
+    <!--
+        (function($){
+            $.fn.ShowQuery = function(i) {
+                alert("$(\""+ $(this).selector + "\", " + $(this).context +")");
+                if (i < 3)
+                {
+                    $($(this).selector, $(this).context).ShowQuery(i+1);
+                }
+            };
+            $("div").ShowQuery(1);
+        })(jQuery);
+    //-->
+    </script>
+</head>
+<body>
+    <div>
+        This is a div.
+    </div>
+</body>
+</html>

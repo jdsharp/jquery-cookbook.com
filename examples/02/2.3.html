@@ -1,0 +1,25 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Chapter 2 - Recipe 3 - Convert a selected jQuery object into a raw DOM object</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
+    <script type="text/javascript">
+        (function($){
+            $(document).ready(function(){
+                var inner = $("div").get(0).innerHTML;
+                alert(inner);
+            });
+        })(jQuery);
+    </script>
+</head>
+<body>
+    <div>
+        <p>
+            jQuery, the write less, do more javascript library.  Saving the day for web developers since 2006.
+        </p>
+    </div>
+</body>
+</html>

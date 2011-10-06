@@ -1,0 +1,36 @@
+/* `Tool-Tip
+----------------------------------------------------------------------------------------------------*/
+
+.tooltip {
+	cursor: default;
+}
+
+a.tooltip {
+	cursor: pointer;
+}
+
+#tooltip_outer,
+#tooltip_inner {
+	border: 1px solid;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+#tooltip_outer {
+	background: #fff;
+	border-color: #666;
+	display: none;
+	font-size: 10px;
+	padding: 1px;
+	position: absolute;
+	left: -9999px;
+	width: 200px;
+	z-index: 9999;
+}
+
+#tooltip_inner {
+	background: #f9f9f9;
+	border-color: #ccc;
+	padding: 10px;
+}

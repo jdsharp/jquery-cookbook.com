@@ -1,0 +1,116 @@
+﻿/* `Modal
+----------------------------------------------------------------------------------------------------*/
+
+#modal_wrapper {
+	display: none;
+	position: fixed;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+}
+
+/* For IE6. */
+* html #modal_wrapper {
+	position: absolute;
+}
+
+#modal_overlay,
+#modal_iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+* html #modal_iframe {
+	filter: alpha(opacity = 0.1);
+}
+
+#modal_overlay {
+	background: #000;
+	opacity: 0.4;
+	filter: alpha(opacity = 40);
+}
+
+#modal_window {
+	visibility: hidden;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+#modal_window {
+	background: #fff;
+	border: 2px solid #000;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 1px 20px 0;
+	width: 500px;
+}
+
+#modal_bar {
+	background: #ccc url(../_common/gradient.gif) repeat-x;
+	border: 1px solid;
+	border-color: #eee #ccc #999;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	margin: 0 -19px 20px;
+	padding: 5px 10px;
+	position: relative;
+}
+
+#modal_content {
+	overflow: hidden;
+}
+
+#modal_content object,
+#modal_content embed {
+	display: block;
+	margin: 0 auto;
+}
+
+#modal_content img {
+	display: none;
+}
+
+#modal_content img.modal_placeholder {
+	visibility: hidden;
+	width: 100%;
+	height: 100px;
+}
+
+#modal_image_wrapper {
+	background: url(../_common/loading.gif) no-repeat center center;
+}
+
+#modal_image_wrapper img {
+	display: block;
+	margin: 0 auto;
+}
+
+#modal_close {
+	background: url(../_common/close.gif) no-repeat;
+	cursor: default;
+	font-size: 0;
+	overflow: hidden;
+	position: absolute;
+	top: 4px;
+	right: 5px;
+	text-decoration: none;
+	text-indent: -9999px;
+	width: 28px;
+	height: 15px;
+}
+
+#modal_close:hover {
+	background-position: left bottom;
+}

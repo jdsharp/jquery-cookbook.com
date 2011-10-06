@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Chapter 6 - Recipe 6</title>
+<link rel="stylesheet" href="chapter6.css" type="text/css" media="screen">
+<script src="jquery-latest.js" type="text/javascript"></script>
+<style type="text/css" media="screen">
+  /* reset some of the styles so we can animate the margin */
+  body {
+    margin: 20px;
+  }
+  .box, #single input {
+    margin-left: 0;
+  }
+</style>
+<script type="text/javascript">
+  $(document).ready(function () {
+    var speed = 100;
+    
+    $('#animate').click(function () {
+      $('.box')
+        .filter(':not(:animated)') // comment out this line to see the effect of multiple clicks
+        .animate({ marginLeft: -10 }, speed, function () {
+          $('#debug').append('<p>Starting animation.</p>');
+        })
+        .animate({ marginLeft: 10 }, speed)
+        .animate({ marginLeft: -10}, speed)
+        .animate({ marginLeft: 10 }, speed)
+        .animate({ marginLeft: -10}, speed)
+        .animate({ marginLeft: 10 }, speed)
+        .animate({ marginLeft: 0}, speed, function () {
+          $('#debug').append('<p>Finished animation.</p>');
+        }); // end of our long chain
+    });
+  });
+</script>
+</head>
+<body id="single">
+  <h1>Determining whether elements are currently being animated</h1>
+  <input type="button" id="animate" value="animate" />
+  <div class="box">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
+       eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+  <div id="debug"></div>
+</body>
+</html>

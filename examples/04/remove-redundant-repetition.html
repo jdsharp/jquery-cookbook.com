@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Remove Redundant Repetition - jQuery Cookbook</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en-us" />
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js">',
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<style type="text/css">
+		.reveal { display:none; }
+	</style>
+	
+	<script type="text/javascript">
+		
+		// Problem
+		
+		$(document).ready( function() {
+			
+			// Set visibility at startup
+			$('#state0').toggle( $('#country0').val() == 'US' );
+			$('#province0').toggle( $('#country0').val() == 'CA' );
+			
+			// Update visibility when country selector changes via mouse
+			$('#country0').change( function() { 
+				$('#state0').toggle( $(this).val() == 'US' );
+				$('#province0').toggle( $(this).val() == 'CA' );
+			});
+			
+			// Also update when country selector changes via keyboard
+			$('#country0').keyup( function() { 
+				$('#state0').toggle( $(this).val() == 'US' );
+				$('#province0').toggle( $(this).val() == 'CA' );
+			});
+			
+		});
+		
+		// Solution 1:
+		
+		$(document).ready( function() {
+			
+			var $country = $('#country1');
+			
+			function setVisibility() {
+				var value = $country.val();
+				$('#state1').toggle( value == 'US' );
+				$('#province1').toggle( value == 'CA' );
+			}
+			
+			setVisibility();
+			$country.bind( 'change keyup', setVisibility );
+			
+		});
+		
+		// Solution 2:
+		
+		$(document).ready( function() {
+			
+			$('#country2')
+				.bind( 'change keyup', function() {
+				   var value = $(this).val();
+				   $('#state2').toggle( value == 'US' );
+				   $('#province2').toggle( value == 'CA' );
+				})
+				.trigger('change');
+			
+		});
+		
+	</script>
+
+</head>
+<body style="">
+	
+	<div style="margin:8px;">
+		
+		<h3>Problem</h3>
+		
+		<label for="country0">
+			Country:
+			<select id="country0">
+				<option value="US">United States</option>
+				<option value="CA">Canada</option>
+			</select>
+		</label>
+		
+		&nbsp;&nbsp;
+		
+		<label id="state0" for="stateSelect0">
+			State:
+			<select id="stateSelect0">
+				<option value="AL">Alabama</option>
+				<option value="..">&#8230;</option>
+				<option value="WY">Wyoming</option>
+			</select>
+		</label>
+		
+		<label id="province0" for="provinceSelect0">
+			Province:
+			<select id="provinceSelect0">
+				<option value="AB">Alberta</option>
+				<option value="..">&#8230;</option>
+				<option value="SK">Saskatchewan</option>
+			</select>
+		</label>
+		
+	</div>
+	
+	<div style="margin:8px;">
+		
+		<h3>Solution 1</h3>
+		
+		<label for="country1">
+			Country:
+			<select id="country1">
+				<option value="US">United States</option>
+				<option value="CA">Canada</option>
+			</select>
+		</label>
+		
+		&nbsp;&nbsp;
+		
+		<label id="state1" for="stateSelect1">
+			State:
+			<select id="stateSelect1">
+				<option value="AL">Alabama</option>
+				<option value="..">&#8230;</option>
+				<option value="WY">Wyoming</option>
+			</select>
+		</label>
+		
+		<label id="province1" for="provinceSelect1">
+			Province:
+			<select id="provinceSelect1">
+				<option value="AB">Alberta</option>
+				<option value="..">&#8230;</option>
+				<option value="SK">Saskatchewan</option>
+			</select>
+		</label>
+		
+	</div>
+	
+	<div style="margin:8px;">
+		
+		<h3>Solution 2</h3>
+		
+		<label for="country2">
+			Country:
+			<select id="country2">
+				<option value="US">United States</option>
+				<option value="CA">Canada</option>
+			</select>
+		</label>
+		
+		&nbsp;&nbsp;
+		
+		<label id="state2" for="stateSelect2">
+			State:
+			<select id="stateSelect2">
+				<option value="AL">Alabama</option>
+				<option value="..">&#8230;</option>
+				<option value="WY">Wyoming</option>
+			</select>
+		</label>
+		
+		<label id="province2" for="provinceSelect2">
+			Province:
+			<select id="provinceSelect2">
+				<option value="AB">Alberta</option>
+				<option value="..">&#8230;</option>
+				<option value="SK">Saskatchewan</option>
+			</select>
+		</label>
+		
+	</div>
+	
+</body>
+</html>

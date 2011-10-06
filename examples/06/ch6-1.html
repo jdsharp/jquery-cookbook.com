@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Chapter 6 - Recipe 1</title>
+<link rel="stylesheet" href="chapter6.css" type="text/css" media="screen">
+<script src="jquery-latest.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#animate-fade').click(function () {
+      $('.box').animate({ opacity : 'toggle' }, 'slow');
+    });
+
+    // alternative method - but doesn't read as well
+    /*
+    $('#animate-fade').click(function () {
+      $('.box').fadeTo('slow', 'toggle');
+    });
+    */
+
+    // alternative method - but not as succinct
+    /*
+  	$('#animate-fade').click(function () {
+  		var $box = $('.box');
+
+  		if ($box.is(':visible')) {
+  			$box.fadeOut('slow');
+  		} else {
+  			$box.fadeIn('slow');
+  		}
+  	});
+  	*/
+
+  	$('#animate-slide').click(function () {
+  		$('.box').slideToggle('slow');
+  	});
+  	
+  	$('#animate-both').click(function () {
+  		$('.box').animate({
+  		  opacity: 'toggle',
+  		  height: 'toggle'
+  		});
+  	});
+  });
+</script>
+</head>
+<body id="single">
+  <h1>Sliding and fading elements in and out of view</h1>
+  <input type="button" id="animate-slide" value="slide" />
+  <input type="button" id="animate-fade" value="fade" />
+  <input type="button" id="animate-both" value="both" />
+  <div class="box">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
+       eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+</body>
+</html>

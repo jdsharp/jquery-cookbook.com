@@ -1,0 +1,83 @@
+
+
+/* ----- CUSTOM STYLES for the travel application */
+
+body { font-size: 62.5%; }
+
+fieldset { padding: 0 0 1.5em; margin: 0 0 1.5em; border: 0; }
+p, label { padding: 0 0 .5em; margin: 0; line-height: 1.3; }
+p label { display: block; }	
+
+input#departure-date, input#arrival-date { border: 0; background: transparent; font-size: 1.3em; }
+
+.header-label, #passengers p.header-label,
+.header-input { font-size: 1.3em; font-weight: bold; }
+
+.header-input { color: #c18101; }
+
+p.date-feedback { padding: 1.5em 0 1em; }
+p.date-feedback label.header-label { display: inline; }
+
+#travel { position:relative; width: 520px; }
+
+#tab-flight { background: url(../images/icon-tab-flight.png) no-repeat .3em center; padding-left: 50px; }
+#tab-car { background: url(../images/icon-tab-car.png) no-repeat .1em center; padding-left: 45px; }
+#tab-package { background: url(../images/icon-tab-package.png) no-repeat .1em center; padding-left: 45px; }
+
+#passengers { border-bottom: 1px solid #bcbcbc; }
+#passengers input { width: 4em; }
+#passengers p { float: left; font-size: 1em; margin: 0 2em 0 0; }
+#passengers p.header-label { float: none; }
+
+#origin, #destination { width: 19em; }
+
+#departing-from { float: left; }
+#going-to { float: right; }
+
+#search-flights { position: absolute; top: 5em; right: 2em; font-size: 1.5em; padding: .5em 1.5em; cursor: pointer; }
+
+
+
+/* ----- OVERRIDE RULES for jQuery UI widgets */
+
+/* tabs background */
+
+#travel.ui-tabs { padding: 0; border-width: 0; }
+
+#travel .ui-tabs-nav { border-width: 3px; border-top-width: 0; border-left-width: 0; border-right-width: 0; -moz-border-radius-bottomleft: 0; -webkit-border-bottom-left-radius: 0; -moz-border-radius-bottomright: 0; -webkit-border-bottom-right-radius: 0; padding: 0; }
+
+#travel .ui-tabs-nav li { margin-right: .5em; }
+
+#travel .ui-tabs-nav li.ui-tabs-selected { border-width: 3px; margin-bottom: -3px; }
+
+#travel .ui-tabs-nav li.ui-tabs-selected #tab-flight { background-image: url(../images/icon-tab-flight-on.png); }
+#travel .ui-tabs-nav li.ui-tabs-selected #tab-car { background-image: url(../images/icon-tab-car-on.png); }
+#travel .ui-tabs-nav li.ui-tabs-selected #tab-package { background-image: url(../images/icon-tab-package-on.png); }
+
+#travel .ui-tabs-nav a { font-size: 1.5em; padding-top: .7em; padding-bottom: .7em; }
+
+#travel .ui-tabs-panel { border-width: 3px; border-top-width: 0; padding-top: 1.5em; }
+
+
+
+/* datepicker header and links */
+
+#travel .ui-datepicker { padding: 0; }
+
+#travel .ui-datepicker-header { 
+	border-top-width: 0; 
+	border-left-width: 0; 
+	border-right-width: 0; 
+	-moz-border-radius-bottomleft: 0; 
+	-webkit-border-bottom-left-radius: 0; 
+	-moz-border-radius-bottomright: 0; 
+	-webkit-border-bottom-right-radius: 0; 
+}
+
+#travel .ui-datepicker-prev-hover,
+#travel .ui-datepicker-next-hover { 
+	border-width: 0; 
+	background-image: none; 
+}
+
+

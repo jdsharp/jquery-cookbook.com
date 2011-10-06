@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<link rel="stylesheet" href="ui.core.css" />
+    	<link rel="stylesheet" href="ui.slider.css" />
+    	<link rel="stylesheet" href="ui.theme.css" />
+        <script src="../../jquery-1.3.2.min.js"></script>
+        <script src="ui.core.js"></script>
+        <script src="ui.slider.js"></script>
+        <script>
+            jQuery(document).ready(function($){
+                var select = $("#minbeds");
+				var slider = $('<div id="slider"></div>').insertAfter(select).slider({
+				    min: 1,
+				    max: 6,
+				    range: "min",
+				    value: select[0].selectedIndex + 1,
+				    slide: function(event, ui) {
+				        select[0].selectedIndex = ui.value - 1;
+				    }
+				});
+				$("#minbeds").click(function() {
+				    slider.slider("value", this.selectedIndex + 1);
+				});
+            });
+        </script>
+    </head>
+    <body>
+        <form>
+		    <label for="minbeds">Select the minimum number of beds to reserve</label>
+		    <select name="minbeds" id="minbeds">
+			    <option>1</option>
+			    <option>2</option>
+			    <option>3</option>
+			    <option>4</option>
+			    <option>5</option>
+			    <option>6</option>
+			</select>
+        </form>
+    </body>
+</html>

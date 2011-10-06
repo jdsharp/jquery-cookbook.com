@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jQuery Cookbook - Ch.07 - Triggering specific event handlers</title>
+	<link rel="stylesheet" type="text/css" href="../../common.css" />
+	<script type="text/javascript" src="../../jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="../jquery.log.js"></script>
+</head>
+<body>
+	<h1>Triggering specific event handlers</h1>
+	
+	<button id="all">Trigger all</button>
+	<button id="special">Trigger special</button>
+	<button id="common">Trigger non-special</button>
+
+	<script type="text/javascript">
+	(function($){
+	
+		$('body')
+			.bind('foo', function(){
+				jQuery.log('non-special #1');
+			})
+			.bind('foo', function(){
+				jQuery.log('non-special #2');
+			})
+			.bind('foo.special', function(){
+				jQuery.log('special #1');
+			})
+			.bind('foo.special', function(){
+				jQuery.log('special #2');
+			});
+		
+		$('#all').click(function(){ 
+			$('body').trigger('foo') 
+		});
+		
+		$('#special').click(function(){ 
+			$('body').trigger('foo.special') 
+		});
+		
+		$('#common').click(function(){ 
+			$('body').trigger('foo!') 
+		});
+	
+	})(jQuery);
+	</script>
+</div>
+</body>
+</html>

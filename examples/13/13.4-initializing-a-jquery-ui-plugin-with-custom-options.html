@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>13.4 - Initializing a jQuery UI plugin with custom options</title>
+	<link rel="stylesheet" type="text/css" href="../common.css" />
+	<link rel="stylesheet" type="text/css" href="13.css" />
+
+	<link rel="stylesheet" type="text/css" href="themes/base/jquery-ui.css" />
+	<script type="text/javascript" src="../jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="ui/jquery-ui.js"></script>
+
+	<script type="text/javascript">
+	$(function() {
+		$('#myDiv').dialog({
+		    height: 100,          // overrides default: 'auto'
+		    width: 350            // overrides default: 300
+		});
+	});
+	</script>
+</head>
+<body>
+	<h1>13.4 - Initializing a jQuery UI plugin with custom options</h1>
+	<dl>
+		<dt>Dialog with custom options</dt>
+		<dd>
+			<div id="myDiv" title="Dialog Title">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+			</div>
+		</dd>
+	</dl>
+</body>
+</html>

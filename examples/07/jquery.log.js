@@ -1,0 +1,1 @@
+(function($){		$.log = function(){		if (!document.getElementById('logs'))			createLogList();				$('<li />').text(			[].join.call(arguments,' ')		).appendTo('#logs');	};		function createLogList(){		$('body').append('<div><br /><b>Logs:</b><ul id="logs" /></div>');	}})(jQuery);

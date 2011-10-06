@@ -1,0 +1,1 @@
+table {	border:1px black solid;	margin:50px auto;}tr {	cursor:pointer;}tr.disabled {	color:gray;	background-color:darkgray;	font-weight:bold;	cursor:default;}tr.selected {	background-color:lightblue;}

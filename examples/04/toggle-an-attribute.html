@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en-us" />
+	<title>Toggle an Attribute - jQuery Cookbook</title>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js">',
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<style type="text/css">
+		.reveal { display:none; }
+	</style>
+	
+	<script type="text/javascript">
+		
+		// For each element selected in this jQuery object,
+		// set the attribute 'name' to either 'onValue' or 'offValue'
+		// depending on the value of 'on. If 'on' is omitted,
+		// toggle the attribute of each element independently
+		// between 'onValue' and 'offValue'.
+		// If the selected value (either 'onValue' or 'offValue') is
+		// null or undefined, remove the attribute.
+		jQuery.fn.toggleAttr = function( name, onValue, offValue, on ) {
+			function set( $element, on ) {
+				var value = on ? onValue : offValue;
+				return value == null ?
+					$element.removeAttr( name ) :
+					$element.attr( name, value );
+			}
+			return on !== undefined ?
+				set( this, on ) :
+				this.each( function( i, element ) {
+					var $element = $(element);
+					set( $element, $element.attr(name) != onValue );
+				});
+		};
+		
+		// Enable or disable every input element selected in this jQuery object.
+		// Toggle the enable state of each one if enable is omitted.
+		jQuery.fn.toggleEnable = function( enable ) {
+			return this.toggleAttr( 'disabled', false, true, enable );
+		};
+		
+		// Check or uncheck every checkbox element selected in this jQuery object
+		// Toggle the checked state of each one if check is omitted.
+		jQuery.fn.toggleCheck = function( check ) {
+			return this.toggleAttr( 'checked', true, false, check );
+		};
+		
+		$(document).ready( function() {
+			
+			$('.enabler').click( function() {
+				var value = $(this).val().split(' ');
+				$('#chk'+value[1]).toggleEnable( value[0] == 'Enable' );
+			});
+			
+			$('#btnEnable').click( function() {
+				$('.checky').toggleEnable( true );
+			});
+			
+			$('#btnDisable').click( function() {
+				$('.checky').toggleEnable( false );
+			});
+			
+			$('#btnToggleEnable').click( function() {
+				$('.checky').toggleEnable();
+			});
+			
+			$('#btnCheck').click( function() {
+				$('.checky').toggleCheck( true );
+			});
+			
+			$('#btnUncheck').click( function() {
+				$('.checky').toggleCheck( false );
+			});
+			
+			$('#btnToggleCheck').click( function() {
+				$('.checky').toggleCheck();
+			});
+			
+		});
+		
+	</script>
+
+</head>
+<body style="">
+	
+	<div style="margin:8px;">
+		<input type="button" class="enabler" value="Enable One" />
+		<input type="button" class="enabler" value="Enable Two" />
+		<input type="button" class="enabler" value="Enable Three" />
+	</div>
+	
+	<div style="margin:8px;">
+		<input type="button" class="enabler" value="Disable One" />
+		<input type="button" class="enabler" value="Disable Two" />
+		<input type="button" class="enabler" value="Disable Three" />
+	</div>
+	
+	<div style="margin:8px;">
+		<input type="button" id="btnEnable" value="Enable All" />
+		<input type="button" id="btnDisable" value="Disable All" />
+		<input type="button" id="btnToggleEnable" value="Toggle Enable" />
+	</div>
+	
+	<div style="margin:8px;">
+		<input type="button" id="btnCheck" value="Check All" />
+		<input type="button" id="btnUncheck" value="Uncheck All" />
+		<input type="button" id="btnToggleCheck" value="Toggle Check" />
+	</div>
+	
+	<div style="margin:8px;">
+		<label for="chkOne">
+			<input type="checkbox" class="checky" id="chkOne" />
+			One
+		</label>
+		&nbsp;
+		<label for="chkTwo">
+			<input type="checkbox" class="checky" id="chkTwo" />
+			Two
+		</label>
+		&nbsp;
+		<label for="chkThree">
+			<input type="checkbox" class="checky" id="chkThree" />
+			Three
+		</label>
+	</div>
+	
+</body>
+</html>

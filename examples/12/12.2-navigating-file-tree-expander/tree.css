@@ -1,0 +1,81 @@
+/* `Tree Expander
+----------------------------------------------------------------------------------------------------*/
+
+.tree_controls {
+	background: #ccc url(../_common/gradient.gif) repeat-x;
+	border: 1px solid #ddd;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	color: #999;
+	font-size: 10px;
+	margin: 0;
+	overflow: hidden;
+	padding: 5px 0;
+	text-align: center;
+	width: 140px;
+}
+
+.tree_controls a {
+	color: #333;
+	text-decoration: none;
+}
+
+.tree_controls a:hover {
+	text-decoration: underline;
+}
+
+.tree {
+	clear: both;
+	margin: 0 0 20px;
+	padding: 5px 0 0;
+}
+
+.tree,
+.tree ul {
+	background: url(../_common/grey_line.gif) repeat-y;
+}
+
+.tree ul {
+	margin: -4px 0 0 4px;
+	padding: 5px 0 0;
+}
+
+.tree li {
+	background: url(../_common/tree_li.gif) no-repeat 0 11px;
+	clear: both;
+	list-style: none;
+	padding: 5px 0 0 10px;
+}
+
+.tree li.last,
+.tree li:last-child {
+	background: #fff url(../_common/tree_li_last.gif) no-repeat 0 -481px;
+}
+
+.tree .tree_trigger,
+.tree .tree_slug {
+	background: url(../_common/tree_icons.gif) no-repeat;
+	display: inline;
+	float: left;
+	font-size: 0;
+	margin: 2px 5px 0 0;
+	overflow: hidden;
+	text-decoration: none;
+	width: 9px;
+	height: 9px;
+}
+
+.tree .tree_trigger_expanded {
+	background-position: -9px 0;
+}
+
+.tree .tree_slug {
+	background-position: -18px 0;
+}

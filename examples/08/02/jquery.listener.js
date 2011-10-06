@@ -1,0 +1,1 @@
+(function( $ ){		var copiedMethods = 'bind unbind one trigger triggerHandler'.split(' ');		function Listener(){	};		$.each(copiedMethods, function(i,name){		Listener.prototype[name] = $.fn[name];	});		Listener.prototype.each = function(fn) {		fn.call(this);		return this;	};	$.listener = function( data ){		return $.extend(new Listener(), data);	};	})( jQuery );

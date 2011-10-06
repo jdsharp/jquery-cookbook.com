@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jQuery Cookbook - Ch.07 - Removing a whole set of event handlers</title>
+	<link rel="stylesheet" type="text/css" href="../../common.css" />
+	<script type="text/javascript" src="../../jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="../jquery.log.js"></script>
+</head>
+<body>
+	<h1>Removing a whole set of event handlers</h1>
+	<button id="clickable">Click Me</button>
+	<button id="bind">Bind</button>
+	<button id="unbind">Unbind</button>
+	<script type="text/javascript">
+	function log(e){
+		jQuery.log(e.type, 'on', this);
+	}
+	
+	jQuery('#bind').click(function(){
+		jQuery('#clickable').bind('mousedown.my mouseup.my click.my', log);
+	});
+	
+	jQuery('#unbind').click(function(){
+		jQuery('#clickable').unbind('.my', log);
+	});
+	
+	</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Good Composers Borrow - jQuery Cookbook</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en-us" />
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js">',
+	</script>
+	
+	<style type="text/css">
+		.clickme {
+			margin: 8px;
+			padding: 8px;
+			border: 1px solid #888;
+			background-color: #EEE;
+			width: 8em;
+			text-align: center;
+			cursor: pointer;
+		}
+		.active {
+			border: 1px solid #F00;
+			background-color:#FCC;
+		}
+	</style>
+	
+	<script type="text/javascript">
+		
+		jQuery.fn.radioClass = function( cls ) {
+			return this                // Start chain, will return its result
+				.siblings()            // Select all siblings of selected elements
+					.removeClass(cls)  // Remove class from those siblings
+				.end()                 // Go back to original selection
+				.addClass(cls);        // Add class to selected elements
+		};
+		
+		$(document).ready( function() {
+			
+			$('.clickme').click( function() {
+				$(this).radioClass( 'active' );
+			});
+			
+		});
+		
+	</script>
+
+</head>
+<body style="">
+	
+	<div style="margin:8px;">
+		
+		<div class="clickme">Click Me</div>
+		<div class="clickme">Click Me</div>
+		<div class="clickme">Click Me</div>
+		<div class="clickme">Click Me</div>
+		<div class="clickme">Click Me</div>
+		
+	</div>
+	
+</body>
+</html>

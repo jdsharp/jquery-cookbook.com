@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="imagetoolbar" content="false" />
+<title>jQuery Cookbook - Ch.12 - Tabbing Through a Document</title>
+<link rel="stylesheet" type="text/css" href="../_common/basic.css" />
+<link rel="stylesheet" type="text/css" href="tabs.css" />
+<script type="text/javascript">
+/* <![CDATA[ */
+document.write('<link rel="stylesheet" type="text/css" href="preload.css" />');
+/* ]]> */
+</script>
+<script type="text/javascript" src="../_common/jquery.js"></script>
+<script type="text/javascript" src="tabs.js"></script>
+</head>
+<body>
+<div id="container">
+	<ul class="tabs">
+		<li>
+			<a href="#tab_content_primary_01" class="current">Tab Link 01</a>
+		</li>
+		<li>
+			<a href="#tab_content_primary_02">Tab Link 02</a>
+		</li>
+		<li>
+			<a href="#tab_content_primary_03">Tab Link 03</a>
+		</li>
+		<li>
+			<a href="#tab_content_primary_04">Tab Link 04</a>
+		</li>
+		<li>
+			<a href="#tab_content_primary_05">Tab Link 05</a>
+		</li>
+	</ul>
+	<div class="tab_content_wrap">
+		<div id="tab_content_primary_01" class="tab_content">
+			<p>
+				<strong>Content Area 01</strong>
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis augue cursus augue. Donec nisi mi, consequat vel, faucibus ut, porta ac, pede. Proin interdum pulvinar orci. Etiam magna turpis, lacinia at, sagittis sit amet, convallis eget, lorem. Sed tincidunt adipiscing dolor. Nam pellentesque auctor lacus. Mauris at velit quis tortor scelerisque consectetur. Fusce eu purus ut felis varius tincidunt. Curabitur non odio sit amet nisi semper commodo. Maecenas pede. Nulla aliquet lacinia neque. Ut neque ipsum, imperdiet nec, bibendum a, volutpat vitae, dolor. Mauris eros magna, pharetra lobortis, pretium vel, vehicula a, dui. Aliquam pretium. Aliquam sit amet diam eu erat lacinia viverra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam ultrices. Maecenas dui nunc, accumsan a, egestas eget, pulvinar ut, enim.
+			</p>
+		</div>
+		<div id="tab_content_primary_02" class="tab_content">
+			<p>
+				<strong>Content Area 02</strong>
+			</p>
+			<p>
+				Duis ultricies ante. Praesent pulvinar, sapien eget molestie congue, massa sem vehicula nisi, sodales vulputate mi tellus nec massa. Sed aliquet gravida metus. Nulla consequat aliquet pede. Sed massa augue, porta non, ornare ultricies, vestibulum quis, odio. Duis viverra ante et sapien. Fusce gravida ligula eget nibh. Vivamus nec nibh. Maecenas consequat tempor nisi. Etiam dui pede, eleifend ut, ultrices a, eleifend in, leo. Sed ultrices. Ut a diam quis mi rhoncus malesuada. Morbi eros. Donec elit. In hac habitasse platea dictumst.
+			</p>
+		</div>
+		<div id="tab_content_primary_03" class="tab_content">
+			<p>
+				<strong>Content Area 03</strong>
+			</p>
+			<p>
+				Morbi fringilla felis eu arcu. Sed eleifend lacinia tellus. Phasellus pulvinar sollicitudin sem. Ut ut diam sed quam gravida dignissim. Ut erat tellus, congue suscipit, gravida a, imperdiet vitae, lorem. Ut tincidunt turpis. Integer ut ante vel nibh iaculis posuere. Aliquam erat volutpat. Sed turpis. Duis nec enim vitae sapien hendrerit tincidunt. Sed suscipit nulla nec quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu dolor vel ante scelerisque lacinia. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc consequat massa a tortor. Maecenas placerat purus in ante. Vivamus suscipit lectus nec tellus. Nullam dictum diam ac elit. Integer semper.
+			</p>
+		</div>
+		<div id="tab_content_primary_04" class="tab_content">
+			<p>
+				<strong>Content Area 04</strong>
+			</p>
+			<p>
+				Sed tempor neque ac enim. Etiam tincidunt mi eget lacus. Pellentesque in tellus sit amet dui malesuada tincidunt. In lobortis dui eget nunc. Donec ut felis eu magna pretium laoreet. Phasellus nec mi. Curabitur sodales molestie ipsum. Proin viverra malesuada sem. Duis ac lacus. Etiam id eros eu nisl commodo dapibus. Vivamus vehicula pede sed metus. Donec massa. Maecenas sapien. Mauris varius. Sed porttitor ligula molestie purus consequat iaculis. Sed placerat, magna vitae suscipit pharetra, est diam ornare diam, ac vehicula nibh risus vel dolor. Cras massa magna, venenatis ut, tristique eget, auctor et, diam. Etiam sit amet turpis eget mi adipiscing auctor. Nullam commodo volutpat quam.
+			</p>
+		</div>
+		<div id="tab_content_primary_05" class="tab_content">
+			<p>
+				<strong>Content Area 05</strong>
+			</p>
+			<p>
+				Nulla facilisi. Donec nisi. Nam augue elit, interdum nec, dictum vel, commodo lacinia, velit. Sed dolor. Sed porttitor. Nullam ac libero. Quisque iaculis molestie lectus. Donec posuere tristique nulla. Donec sit amet felis vel quam egestas vestibulum. Cras laoreet nisi sed elit. Sed in neque a magna aliquam adipiscing. Vestibulum eget diam nec justo tempus convallis. Pellentesque purus. Nullam quis turpis id velit mattis commodo. Donec tristique, neque quis volutpat fringilla, massa nulla iaculis lectus, non congue orci mi id felis. Sed est erat, facilisis sit amet, tristique tristique, lobortis at, lectus. Aliquam iaculis lectus ac metus.
+			</p>
+		</div>
+	</div>
+	<ul class="tabs">
+		<li>
+			<a href="#tab_content_primary_06" class="current">Tab Link 06</a>
+		</li>
+		<li>
+			<a href="#tab_content_primary_07">Tab Link 07</a>
+		</li>
+		<li>
+			<a href="#tab_content_primary_08">Tab Link 08</a>
+		</li>
+		<li>
+			<a href="#tab_content_primary_09">Tab Link 09</a>
+		</li>
+		<li>
+			<a href="#tab_content_primary_10">Tab Link 10</a>
+		</li>
+	</ul>
+	<div class="tab_content_wrap">
+		<div id="tab_content_primary_06" class="tab_content">
+			<p>
+				<strong>Content Area 06</strong>
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis augue cursus augue. Donec nisi mi, consequat vel, faucibus ut, porta ac, pede. Proin interdum pulvinar orci. Etiam magna turpis, lacinia at, sagittis sit amet, convallis eget, lorem. Sed tincidunt adipiscing dolor. Nam pellentesque auctor lacus. Mauris at velit quis tortor scelerisque consectetur. Fusce eu purus ut felis varius tincidunt. Curabitur non odio sit amet nisi semper commodo. Maecenas pede. Nulla aliquet lacinia neque. Ut neque ipsum, imperdiet nec, bibendum a, volutpat vitae, dolor. Mauris eros magna, pharetra lobortis, pretium vel, vehicula a, dui. Aliquam pretium. Aliquam sit amet diam eu erat lacinia viverra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam ultrices. Maecenas dui nunc, accumsan a, egestas eget, pulvinar ut, enim.
+			</p>
+		</div>
+		<div id="tab_content_primary_07" class="tab_content">
+			<p>
+				<strong>Content Area 07</strong>
+			</p>
+			<p>
+				Duis ultricies ante. Praesent pulvinar, sapien eget molestie congue, massa sem vehicula nisi, sodales vulputate mi tellus nec massa. Sed aliquet gravida metus. Nulla consequat aliquet pede. Sed massa augue, porta non, ornare ultricies, vestibulum quis, odio. Duis viverra ante et sapien. Fusce gravida ligula eget nibh. Vivamus nec nibh. Maecenas consequat tempor nisi. Etiam dui pede, eleifend ut, ultrices a, eleifend in, leo. Sed ultrices. Ut a diam quis mi rhoncus malesuada. Morbi eros. Donec elit. In hac habitasse platea dictumst.
+			</p>
+		</div>
+		<div id="tab_content_primary_08" class="tab_content">
+			<p>
+				<strong>Content Area 08</strong>
+			</p>
+			<p>
+				Morbi fringilla felis eu arcu. Sed eleifend lacinia tellus. Phasellus pulvinar sollicitudin sem. Ut ut diam sed quam gravida dignissim. Ut erat tellus, congue suscipit, gravida a, imperdiet vitae, lorem. Ut tincidunt turpis. Integer ut ante vel nibh iaculis posuere. Aliquam erat volutpat. Sed turpis. Duis nec enim vitae sapien hendrerit tincidunt. Sed suscipit nulla nec quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu dolor vel ante scelerisque lacinia. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc consequat massa a tortor. Maecenas placerat purus in ante. Vivamus suscipit lectus nec tellus. Nullam dictum diam ac elit. Integer semper.
+			</p>
+		</div>
+		<div id="tab_content_primary_09" class="tab_content">
+			<p>
+				<strong>Content Area 09</strong>
+			</p>
+			<p>
+				Sed tempor neque ac enim. Etiam tincidunt mi eget lacus. Pellentesque in tellus sit amet dui malesuada tincidunt. In lobortis dui eget nunc. Donec ut felis eu magna pretium laoreet. Phasellus nec mi. Curabitur sodales molestie ipsum. Proin viverra malesuada sem. Duis ac lacus. Etiam id eros eu nisl commodo dapibus. Vivamus vehicula pede sed metus. Donec massa. Maecenas sapien. Mauris varius. Sed porttitor ligula molestie purus consequat iaculis. Sed placerat, magna vitae suscipit pharetra, est diam ornare diam, ac vehicula nibh risus vel dolor. Cras massa magna, venenatis ut, tristique eget, auctor et, diam. Etiam sit amet turpis eget mi adipiscing auctor. Nullam commodo volutpat quam.
+			</p>
+		</div>
+		<div id="tab_content_primary_10" class="tab_content">
+			<p>
+				<strong>Content Area 10</strong>
+			</p>
+			<p>
+				Nulla facilisi. Donec nisi. Nam augue elit, interdum nec, dictum vel, commodo lacinia, velit. Sed dolor. Sed porttitor. Nullam ac libero. Quisque iaculis molestie lectus. Donec posuere tristique nulla. Donec sit amet felis vel quam egestas vestibulum. Cras laoreet nisi sed elit. Sed in neque a magna aliquam adipiscing. Vestibulum eget diam nec justo tempus convallis. Pellentesque purus. Nullam quis turpis id velit mattis commodo. Donec tristique, neque quis volutpat fringilla, massa nulla iaculis lectus, non congue orci mi id felis. Sed est erat, facilisis sit amet, tristique tristique, lobortis at, lectus. Aliquam iaculis lectus ac metus.
+			</p>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Chapter 2 - Recipe 5 - Make a unique array of values from an existing array</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
+    <script type="text/javascript">
+    <!--
+        (function($){
+            $(document).ready(function(){
+                var arr = $.map($("LI"), function(item, index){
+                    while (index < 3)
+                    {
+                        return $(item).html();
+                    }
+                    return null;
+                });
+                
+                $(document.body).append("<span>The first three authors are: " + arr.join(", ") + "</span>");
+            });
+        })(jQuery);
+    //-->
+    </script>
+</head>
+<body>
+    <h1>jQuery Cookbook Authors</h1>
+    <ol>
+        <li>John Resig</li>
+        <li>Cody Lindley</li>
+        <li>Ralph Whitbeck</li>
+        <li>Jonathan Sharp</li>
+        <li>Micheal Geary</li>
+        <li>Scott González</li>
+        <li>Rebecca Murphy</li>
+        <li>Remy Sharp</li>
+        <li>Ariel Flesler</li>
+        <li>Brian Cherne</li>
+        <li>Jörn Zaefferer</li>
+        <li>Mike Hostetler</li>
+        <li>Nathan Smith</li>
+        <li>Richard Worth</li>
+        <li>James Padolsey</li>
+    </ol>
+</body>
+</html>

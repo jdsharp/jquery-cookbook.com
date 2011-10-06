@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>13.2 - Including an individual jQuery UI plugin or two</title>
+	<link rel="stylesheet" type="text/css" href="../common.css" />
+	<link rel="stylesheet" type="text/css" href="13.css" />
+
+	<link rel="stylesheet" type="text/css" href="themes/ui-lightness/ui.core.css" />
+	<link rel="stylesheet" type="text/css" href="themes/ui-lightness/ui.tabs.css" />
+	<link rel="stylesheet" type="text/css" href="themes/ui-lightness/ui.theme.css" />
+	<script type="text/javascript" src="../jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="ui/ui.core.js"></script>
+	<script type="text/javascript" src="ui/ui.sortable.js"></script>
+	<script type="text/javascript" src="ui/ui.tabs.js"></script>
+
+	<script type="text/javascript">
+	$(function() {
+
+		$('#tabs').tabs();
+		
+		$("#tabs ul").sortable({ axis: 'x' });
+		
+	});
+	</script>
+</head>
+<body>
+	<h1>13.2 - Including an individual jQuery UI plugin or two</h1>
+	<dl>
+		<dt>Sortable Tabs</dt>
+		<dd>
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1">First</a></li>
+					<li><a href="#tabs-2">Second</a></li>
+					<li><a href="#tabs-3">Third</a></li>
+				</ul>
+				<div id="tabs-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				<div id="tabs-2">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
+				<div id="tabs-3">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+			</div>
+		</dd>
+	</dl>
+</body>
+</html>

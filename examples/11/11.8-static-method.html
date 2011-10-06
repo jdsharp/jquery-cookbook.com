@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jQuery Cookbook - 11.8 Adding a static function to your Plugin</title>
+	<link rel="stylesheet" type="text/css" href="../common.css" />
+	<link rel="stylesheet" type="text/css" href="plugins.css" />
+	<script type="text/javascript" src="../jquery-1.3.2.min.js"></script>
+  <script type="text/javascript" src="metadata/jquery.metadata.js"></script>
+</head>
+<body>
+	<h1>Adding a static function to your Plugin</h1>
+
+  <input type="submit" id="one" name="one" value="Do Original Pulse" />
+  <input type="submit" id="two" name="two" value="Do Impulse" />
+  <input type="submit" id="three" name="three" value="Do Warpspeed" />
+
+  <p class="{pulses: 8, speed: 'slow'}">Starship Enterprise</p>
+  <p>Battlestar Galactica</p>
+  <p class="{speed: 100}">Serenity</p>
+
+  <script type="text/javascript">
+    jQuery(document).ready(function() {
+      jQuery('#one').click(function() {
+        jQuery('p').pulse({pulses: 6});
+      });
+      jQuery('#two').click(function() {
+        jQuery.pulse.impulse(jQuery('p:last'));
+      });
+      jQuery('#three').click(function() {
+        jQuery.pulse.warpspeed(jQuery('p:first'));
+      });
+    });
+
+    ;(function($) {
+      $.fn.pulse = function(options) {
+        // Merge passed options with defaults
+        var opts = $.extend({}, $.fn.pulse.defaults, options);
+
+        return this.each(function() {
+
+          // Merge in the metadata elements for this specific node
+          var o = $.metadata ? $.extend({}, opts, $.metadata.get(this)) : opts;
+
+          doPulse($(this),o);
+        });
+      };
+
+      function doPulse($obj,opts) { 
+        for(var i = 0;i<opts.pulses;i++) {
+          $obj.fadeTo(opts.speed,opts.fadeLow).fadeTo(opts.speed,opts.fadeHigh);
+        }
+
+        // Reset to normal
+        $obj.fadeTo(opts.speed,1); 
+      }
+
+      // Define our base to add to
+      $.pulse = {};
+
+      // Static Function
+      $.pulse.impulse = function($obj) {
+        var opts = {
+          speed: 2500,
+          pulses: 10,
+          fadeLow: 0.2,
+          fadeHigh: 0.8
+        };
+        doPulse($obj,opts); 
+      }
+
+      // Static Function
+      $.pulse.warpspeed = function($obj) {
+        var opts = {
+          speed: 25,
+          pulses: 100,
+          fadeLow: 0.2,
+          fadeHigh: 0.8
+        };
+        doPulse($obj,opts); 
+      }
+
+      // Pulse plugin default options
+      $.fn.pulse.defaults = { 
+        speed: "slow",
+        pulses: 2,
+        fadeLow: 0.2,
+        fadeHigh: 1
+      };
+    })(jQuery);
+  </script>
+</body>
+</html>

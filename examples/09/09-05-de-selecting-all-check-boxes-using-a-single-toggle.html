@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="imagetoolbar" content="false" />
+	<title>jQuery Cookbook - Ch.09.5 - (De)selecting all check boxes using a single toggle</title>
+
+	<!-- NOT REQUIRED. Just making things look prettier. -->
+	<link rel="stylesheet" type="text/css" href="basic.css" />
+
+	<!-- NOT REQUIRED. Just making things look prettier. -->
+	<style type="text/css" title="text/css">
+		form {
+			padding: 1em 0;
+		}
+		fieldset {
+			margin: 0 0 1em 0;
+			padding: 1em;
+		}
+		label {
+			float: left;
+			display: block;
+			width: 10em;
+			line-height: 1.5em;
+			text-indent: .5em;
+		}
+		input {
+			float: left;
+			clear: left;
+		}
+		label[for="toggleAllReasons"] {
+			background: #eee;
+		}
+	</style>
+
+	<!-- REQUIRED -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
+	<!-- REQUIRED -->
+	<script type="text/javascript">
+		// when the HTML DOM is ready
+		$(document).ready(function(){
+			// find the "Select All" toggle in a fieldset, cycle through each one you find
+			$('fieldset .toggle:checkbox').each(function(){
+			
+				// these are used more than once, let's store them to be more efficient
+				// the toggle checkbox
+				var $toggle = $(this);
+				// the other checkboxes
+				var $checkboxes = $toggle.siblings('input:checkbox');
+			
+				// listen for the change event on the toggle
+				$toggle.change(function(){
+					if ( this.checked ) {
+						// if checked, select all the checkboxes
+						$checkboxes.attr('checked','checked');
+					} else {
+						// if not checked, deselect all the checkboxes
+						$checkboxes.removeAttr('checked');
+					}
+				});
+			
+				// listen for the change event on each individual checkbox (not toggle)
+				$checkboxes.change(function(){
+					if ( this.checked ) {
+						// if this is checked and all others are checked, select the toggle
+						if ( $checkboxes.length == $checkboxes.filter(':checked').length ) {
+							$toggle.attr('checked','checked');
+						}
+					} else {
+						// if not checked, deselect the toggle
+						$toggle.removeAttr('checked');
+					}
+				}).eq(0).trigger('change');
+			}); // close each()
+
+		}); // close ready()
+	</script>
+</head>
+<body>
+
+<div id="container">
+	<h1>(De)selecting all check boxes using a single toggle</h1>
+
+	<form action="">
+
+		<fieldset>
+		
+			<legend>Reasons to be happy</legend>
+		
+			<input name="reasons" id="toggleAllReasons" type="checkbox" class="toggle" />
+			<label for="toggleAllReasons">Select All</label>
+		
+			<input name="reasons" id="iwokeup" type="checkbox" value="iwokeup" />
+			<label for="iwokeup">I woke up</label>
+		
+			<input name="reasons" id="health" type="checkbox" value="health" />
+			<label for="health">My health</label>
+		
+			<input name="reasons" id="family" type="checkbox" value="family" />
+			<label for="family">My family</label>
+		
+			<input name="reasons" id="sunshine" type="checkbox" value="sunshine" />
+			<label for="sunshine">The sun is shining</label>
+		
+		</fieldset>
+
+	</form>
+
+</div>
+
+</body>
+</html>

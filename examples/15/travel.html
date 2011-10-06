@@ -1,0 +1,130 @@
+<!doctype html>
+
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Travel widget | Book a Flight, Rent a Car, or Find Package Deals</title>
+		
+	<!-- jQuery UI styles -->
+	<link rel="stylesheet" type="text/css" href="css/custom-theme/jquery-ui-1.7.1.custom.css" />
+	<!-- scoped styles for tab content: <link rel="stylesheet" type="text/css" href="css/tab-content-theme/jquery-ui-1.7.1.custom.css" /> -->
+	
+	<!-- overrides & custom styles for the travel widget application -->
+	<link rel="stylesheet" type="text/css" href="css/travel.css" />
+	
+	<!-- jQuery core & UI scripts -->
+	<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.7.1.custom.min.js"></script>
+	
+	<script type="text/javascript">
+	$(function(){
+	// initialize tabs and datepickers
+		$('#travel').tabs();
+		$('#departure-date-picker').datepicker({altField: '#departure-date', altFormat: 'MM d, yy'});
+		$('#arrival-date-picker').datepicker({altField: '#arrival-date', altFormat: 'MM d, yy'});
+		
+	// search button hover & active states		
+		$('#search-flights')
+			.hover(
+				function(){ $(this).removeClass('ui-state-default').addClass('ui-state-hover'); },
+				function(){ $(this).removeClass('ui-state-hover').addClass('ui-state-default'); }
+			)		
+			.mousedown(
+				function(){ $(this).removeClass('ui-state-default, ui-state-hover').addClass('ui-state-active'); }
+			);			
+	});
+	</script>
+</head>
+
+<body>
+
+<form action="" method="post">
+<div id="travel">
+	<ul>
+		<li><a href="#travel-flight" id="tab-flight">Book a Flight</a></li>
+		<li><a href="#travel-car" id="tab-car">Rent a Car</a></li>
+		<li><a href="#travel-package" id="tab-package">Package Deals</a></li>
+	</ul>
+	
+	<div id="travel-flight" class="ui-helper-clearfix">		
+		<fieldset id="passengers">
+			<p class="header-label">Passengers:</p>
+			
+			<p>
+			<label for="passengers-adults" class="sub-label">Adults</label>
+			<input type="text" id="passengers-adults" />
+			</p>
+			
+			<p>
+			<label for="passengers-children" class="sub-label">Children</label>
+			<input type="text" id="passengers-children" />
+			</p>
+			
+			<p>
+			<label for="passengers-seniors" class="sub-label">Seniors</label>
+			<input type="text" id="passengers-seniors" />
+			</p>
+		</fieldset><!-- /passengers -->
+		
+		<fieldset id="departing-from">
+			<p>
+			<label for="origin" class="header-label">Departing from</label>
+			<select id="origin">
+				<option>Austin, TX (AUS)</option>
+				<option selected="selected">Boston, MA (BOS)</option>
+				<option>Chicago, IL - O'Hare (ORD)</option>
+				<option>New York, NY - Kennedy (JFK)</option>
+				<option>San Francisco, CA (SFO)</option>
+			</select>
+			</p>
+			
+			<p class="date-feedback">
+			<label for="departure-date" class="header-label">When: </label>
+			<input type="text" id="departure-date" class="header-input" />
+			</p>
+			
+			<div id="departure-date-picker"></div>
+		</fieldset><!-- /departing-from -->
+		
+		<fieldset id="going-to">
+			<p>
+			<label for="destination" class="header-label">Going to</label>
+			<select id="destination">
+				<option>Austin, TX (AUS)</option>
+				<option selected="selected">Boston, MA (BOS)</option>
+				<option>Chicago, IL - O'Hare (ORD)</option>
+				<option>New York, NY - Kennedy (JFK)</option>
+				<option>San Francisco, CA (SFO)</option>
+			</select>
+			</p>
+			
+			<p class="date-feedback">
+			<label for="arrival-date" class="header-label">When: </label>
+			<input type="text" id="arrival-date" class="header-input" />
+			</p>
+			
+			<div id="arrival-date-picker"></div>
+		</fieldset><!-- /going-to -->	
+		
+		<button id="search-flights" class="ui-state-default ui-corner-all" disabled="disabled">Search for Flights</button><!--  class="ui-state-default ui-corner-all" -->
+	</div><!-- /flight -->
+	
+	<div id="travel-car">
+		<fieldset>
+			<p>Rent a Car...</p>
+		</fieldset>
+	</div><!-- /car -->
+	
+	<div id="travel-package">
+		<fieldset>
+			<p>Package Deals...</p>
+		</fieldset>
+	</div><!-- /package -->
+</div><!-- /travel -->
+</form>
+
+
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+/* `Rotator >> `Wrapper
+----------------------------------------------------------------------------------------------------*/
+
+#rotator_wrapper {
+	overflow: hidden;
+	position: relative;
+	width: 500px;
+	height: 375px;
+}
+
+#rotator_wrapper li {
+	list-style: none;
+}
+
+/* `Rotator
+----------------------------------------------------------------------------------------------------*/
+
+#rotator,
+#rotator li,
+#rotator img {
+	width: 500px;
+	height: 375px;
+}
+
+#rotator {
+	background: #fff;
+	position: relative;
+}
+
+#rotator li {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* `Rotator >> `Controls
+----------------------------------------------------------------------------------------------------*/
+
+#rotator_controls {
+	overflow: hidden;
+	position: absolute;
+	top: 5px;
+	left: 2px;
+}
+
+#rotator_controls li {
+	display: inline;
+	float: left;
+	margin: 0 0 0 3px;
+	width: 30px;
+}
+
+#rotator_play_pause,
+#rotator_controls a {
+	background: #ccc url(../_common/gradient.gif) repeat-x;
+	border: 1px solid #000;
+	color: #999;
+	display: block;
+	font: bold 11px Verdana, sans-serif;
+	padding: 1px 5px 2px;
+	text-align: center;
+	text-decoration: none;
+}
+
+#rotator_controls a.current {
+	color: #000;
+	text-decoration: underline;
+}
+
+#rotator_play_pause:hover,
+#rotator_controls a:hover {
+	background: #000;
+	border-color: #fff;
+	color: #fff;
+}
+
+#rotator_play_pause {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
+
+/* For IE6. */
+* html #rotator_play_pause,
+* html #rotator_controls a {
+	height: 1%;
+}

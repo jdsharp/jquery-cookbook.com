@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<title>Unit Testing - Keeping Tests Atomic, testing for globals</title>
+        <script src="../../jquery-1.3.2.min.js"></script>
+        <link rel="stylesheet" href="http://jqueryjs.googlecode.com/svn/trunk/qunit/testsuite.css" type="text/css" media="screen" />
+        <script type="text/javascript" src="http://jqueryjs.googlecode.com/svn/trunk/qunit/testrunner.js"></script>
+        <script type="text/javascript">
+            test("global pollution", function(){
+                window.pollute = true;
+				same(pollute, true);
+            });
+        </script>
+    </head>
+    <body>
+        <div id="main"></div>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+#results {
+background-color: #ccc;
+padding: 10px;
+color: #666;
+width: 300px;
+margin: 10px 0 0 0;
+}
+
+div {
+margin: 0;
+padding: 0;
+border: 0;
+}
+
+p {
+font-size: 12px;
+margin: 0 0 5px 0;
+line-height: 1.2em;
+}
+
+h1 {
+font-size:20px;
+margin:0 0 5px 0;
+padding:0;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="imagetoolbar" content="false" />
+<title>jQuery Cookbook - Ch.12 - Cross-fading Rotating Images</title>
+<link rel="stylesheet" type="text/css" href="../_common/basic.css" />
+<link rel="stylesheet" type="text/css" href="rotator.css" />
+<script type="text/javascript">
+/* <![CDATA[ */
+document.write('<link rel="stylesheet" type="text/css" href="preload.css" />');
+/* ]]> */
+</script>
+<script type="text/javascript" src="../_common/jquery.js"></script>
+<script type="text/javascript" src="rotator.js"></script>
+</head>
+<body>
+<div id="container">
+	<div id="rotator_wrapper">
+		<ul id="rotator">
+			<li id="photo_1">
+				<img src="../_common/photo_1.jpg" alt="Photo" />
+			</li>
+			<li id="photo_2">
+				<img src="../_common/photo_2.jpg" alt="Photo" />
+			</li>
+			<li id="photo_3">
+				<img src="../_common/photo_3.jpg" alt="Photo" />
+			</li>
+			<li id="photo_4">
+				<img src="../_common/photo_4.jpg" alt="Photo" />
+			</li>
+			<li id="photo_5">
+				<img src="../_common/photo_5.jpg" alt="Photo" />
+			</li>
+		</ul>
+		<ul id="rotator_controls">
+			<li>
+				<a href="#photo_1" class="current">1</a>
+			</li>
+			<li>
+				<a href="#photo_2">2</a>
+			</li>
+			<li>
+				<a href="#photo_3">3</a>
+			</li>
+			<li>
+				<a href="#photo_4">4</a>
+			</li>
+			<li>
+				<a href="#photo_5">5</a>
+			</li>
+		</ul>
+		<a href="#" id="rotator_play_pause">PAUSE</a>
+	</div>
+</div>
+</body>
+</html>

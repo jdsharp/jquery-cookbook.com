@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Write Faster Selectors and Cache Your Objects - jQuery </title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en-us" />
+	
+	<script type="text/javascript" src="cache-your-objects.js"></script>
+	<script type="text/javascript" src="tools.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<style type="text/css">
+		.mark {
+			cursor: default;
+			width: 5px;
+			height: 5px;
+			background-color: red;
+			position: absolute;
+			z-index: -1;
+		}
+	</style>
+	
+	<script type="text/javascript">
+		main();
+	</script>
+
+</head>
+<body style="width:100%; height:100%; margin:0; padding:0; overflow:hidden;">
+	
+	<div style="margin:8px;">
+		
+		<div style="margin-bottom:16px;">
+			<div style="float:left; margin-right:30px;">
+				<script type="text/javascript">
+					writeSelect();
+				</script>
+			</div>
+			<div id="methods" style="float:left;">
+				<div>
+					<label for="rdoClass">
+						<input type="radio" name="method" value="class" id="rdoClass" checked="checked" />
+						<code>$('.foo')</code> - Class Selectors
+					</label>
+				</div>
+				<div>
+					<label for="rdoScoped">
+						<input type="radio" name="method" value="scoped" id="rdoScoped" />
+						<code>$('#foo td.bar')</code> - Scoped Selectors
+					</label>
+				</div>
+				<div>
+					<label for="rdoId">
+						<input type="radio" name="method" value="id" id="rdoId" />
+						<code>$('#foo')</code> - ID Selectors
+					</label>
+				</div>
+				<div>
+					<label for="rdoCache">
+						<input type="radio" name="method" value="cache" id="rdoCache" />
+						<code>var $foo</code> - Cache Objects
+					</label>
+				</div>
+			</div>
+			<div style="clear:left;">
+			</div>
+		</div>
+		
+		<div style="margin-bottom:16px;">
+		</div>
+		
+		<div style="margin-bottom:16px;">
+			Move the mouse and observe the trail smoothness and the Update Time shown below.<br />
+			Each point in the mouse trail represents one <code>mousemove</code> event.<br />
+			The trail "cleanup" runs on a <code>setInterval()</code> timer.
+			If the cleanup falls far behind it means the timer is not being called
+			often enough, probably because the other JavaScript code takes too long.<br />
+			Try both versions of jQuery and each of the selector options.<br />
+			Especially note performance in IE7 and IE8.<br />
+			Bonus fun: Overlap a few windows from different browsers and move the mouse around on all of them.
+		</div>
+		
+		<table>
+			<tr><td>Update Time:</td><td id="time"></td></tr>
+			<tr><td>Count:</td><td id="count" class="count"></td></tr>
+			<tr><td>Timestamp:</td><td id="timeStamp" class="timeStamp"></td></tr>
+			<tr><td>Target:</td><td id="target" class="target"></td></tr>
+			<tr><td>Client X:</td><td id="clientX" class="clientX"></td></tr>
+			<tr><td>Client Y:</td><td id="clientY" class="clientY"></td></tr>
+			<tr><td>Page X:</td><td id="pageX" class="pageX"></td></tr>
+			<tr><td>Page Y:</td><td id="pageY" class="pageY"></td></tr>
+			<tr><td>Screen X:</td><td id="screenX" class="screenX"></td></tr>
+			<tr><td>Screen Y:</td><td id="screenY" class="screenY"></td></tr>
+		</table>
+		
+		<script type="text/javascript">
+			bigdoc();
+		</script>
+		
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Current and total time labels</title>
+	<link rel="stylesheet" type="text/css" href="../common.css" />
+	<link rel="stylesheet" type="text/css" href="13.css" />
+
+	<link rel="stylesheet" type="text/css" href="themes/ui-lightness/jquery-ui.css" />
+	<style type="text/css">
+		#themeswitcher { position: absolute; top: 10px; right: 10px; }
+
+		.mplayer { position: relative; width: 40%; height: 2.5em; margin: 50px 0 100px 0; }
+
+		.mplayer .buttons-container { position: absolute; top: 10px; left: 10px; }
+		.mplayer .buttons-container .playpause { height: 1.2em; width: 1.2em; display: block; position: relative; top: -2px; left: -2px; }
+		.mplayer .buttons-container .playpause .ui-icon { margin: -1px 0 0 -1px; }
+		.mplayer .playpause .ui-icon-play, .paused .playpause .ui-icon-pause { display: none; }
+		.paused .playpause .ui-icon-play { display: block; }
+
+		.mplayer .currenttime { position: absolute; top: 0.6em; left: 2.2em; width: 3em; text-align: center; background: none; border: none; }
+		.mplayer .duration { position: absolute; top: 0.6em; right: 2.2em; width: 3em; text-align: center; background: none; border: none; }
+
+
+
+
+
+
+
+
+
+
+
+
+	</style>
+	<script type="text/javascript" src="../jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="ui/jquery-ui.js"></script>
+	<script src="http://jqueryui.com/themeroller/themeswitchertool/"></script>
+	
+	<script type="text/javascript">
+
+	$(function() {
+		var secondsTotal = 195;
+
+		var $audio = $('audio'), audioEl = $audio[0];
+		var audio = {
+			currentTime: 0,
+			duration: secondsTotal,
+			volume: 0.5,
+			set: function(key, value) {
+				this[key] = value;
+				try { audioEl[key] = value; } catch(e) {}
+				if (key == 'currentTime') {
+					$audio.trigger('timeupdate');
+				}
+				if (key == 'volume') {
+					$audio.trigger('volumechange');
+				}
+			},
+			play: function() {
+				audioEl.play && audioEl.play();
+			},
+			pause: function() {
+				audioEl.pause && audioEl.pause();
+			}
+		};
+		$audio.bind('timeupdate', function() {
+			audio.currentTime = audioEl.currentTime;
+		});
+		audio.set('currentTime', 0);
+		audio.set('volume', 0.5);
+
+		// Create the play/pause button using two toggling jQuery UI icons
+		$('.mplayer .playpause').click(function() {
+			var player = $(this).parents('.mplayer');
+			if (player.is('.paused')) {
+				$('.mplayer').removeClass('paused');
+				audio.play();
+			} else {
+				$('.mplayer').addClass('paused');
+				audio.pause();
+			}
+			return false;
+		})
+		.hover(function() { $(this).addClass('ui-state-hover'); },
+			function() { $(this).removeClass('ui-state-hover'); })
+		.focus(function() { $(this).addClass('ui-state-focus'); })
+		.blur(function() { $(this).removeClass('ui-state-focus'); });
+		$('.mplayer').addClass('paused');
+
+		// prevent text selection of text in time labels
+		$('.mplayer .currenttime, .mplayer .duration').disableSelection();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		function minAndSec(sec) {
+			sec = parseInt(sec);
+			return Math.floor(sec / 60) + ":" + (sec % 60 < 10 ? '0' : '') + Math.floor(sec % 60);
+		}
+		$('.mplayer .currenttime').text(minAndSec(audio.currentTime));
+		$('.mplayer .duration').text(minAndSec(secondsTotal));
+
+
+		$audio
+			.bind('timeupdate', function(event) {
+
+
+
+
+
+				$('.mplayer .currenttime').text(minAndSec(audio.currentTime));
+			})
+
+
+
+
+
+
+			  ;
+
+
+
+
+
+
+
+
+
+
+	});
+
+	$(function() {
+		// Turn on themeswitcher
+		$.fn.themeswitcher && $('#themeswitcher').themeswitcher();
+
+		// Hide some themes that aren't a great fit for this demo
+		$('#themeswitcher').next('div').find('ul').children('li').find(
+			'a[href*=eggplant],a[href*=overcast],a[href*=flick],a[href*=pepper-grinder],a[href*=cupertino]'
+			+ ',a[href*=south-street],a[href*=excite-bike],a[href*=vader],a[href*=trontastic]'
+		).parent().remove();
+	});
+
+	</script>
+</head>
+<body>
+	<h1>13.10 Creating a jQuery UI music player</h1>
+	<h2>13.10.2 Current and total time labels</h2>
+	
+	<audio id="theAudio" src="BigBillBroonzy_BabyPleaseDontGo.ogg"></audio>
+
+	<div class="mplayer ui-widget">
+
+
+
+
+
+		<div class="buttons-container">
+			<a class="playpause ui-state-default ui-corner-all" href="#">
+				<span class="ui-icon ui-icon-play"></span>
+				<span class="ui-icon ui-icon-pause"></span>
+			</a>
+		</div>
+		<span class="currenttime ui-state-default"></span>
+
+		<span class="duration ui-state-default"></span>
+
+
+
+
+
+	</div>
+	
+	<div id="themeswitcher"></div>
+
+</body>
+</html>

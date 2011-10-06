@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<title>Unit Testing - Asserting results</title>
+        <script src="../../jquery-1.3.2.min.js"></script>
+        <link rel="stylesheet" href="http://jqueryjs.googlecode.com/svn/trunk/qunit/testsuite.css" type="text/css" media="screen" />
+        <script type="text/javascript" src="http://jqueryjs.googlecode.com/svn/trunk/qunit/testrunner.js"></script>
+        <script type="text/javascript">
+            test("ok test", function() {
+				ok(true, "ok succeeds");
+				ok(false, "ok fails");
+			});
+			
+			test("equals test", function() {
+			    equals("", 0, "equals succeeds");
+			    equals("three", 3, "equals fails");
+			});
+
+			test("same test", function() {
+			    same(undefined, undefined, "same succeeds");
+			    same("", 0, "same fails");
+			});
+        </script>
+    </head>
+    <body>
+        <div id="main"></div>
+    </body>
+</html>

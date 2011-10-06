@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en-us" />
+	<title>Task List</title>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js">',
+	</script>
+	
+	<script type="text/javascript">
+		
+		$(document).ready(function() {
+			var url = $('form').attr('action');
+			$(':checkbox').click(function() {
+				$.post(url, this.name + '=1');
+				$(this).parent().slideUp(function() {
+					$(this).remove();
+				});
+			});
+			$(':submit').hide();
+		});
+		
+	</script>
+</head>
+<body>
+
+<form method="post" action="tasklist.html">
+	<ul>
+		<li>
+			<input type="checkbox" name="task1" id="task1" />
+			<label for="task1">Learn jQuery</label>
+		</li>
+		<li>
+			<input type="checkbox" name="task2" id="task2" />
+			<label for="task2">Learn Progressive Enhancement</label>
+		</li>
+		<li>
+			<input type="checkbox" name="task3" id="task3" />
+			<label for="task3">Build Great Web Sites</label>
+		</li>
+	</ul>
+	<input type="submit" value="Mark Complete" />
+</form>
+
+</body>
+</html>

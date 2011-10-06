@@ -1,0 +1,34 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Chapter 2 - Recipe 7 - Configure jQuery to free up a conflict with another library</title>
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.3/prototype.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript">
+    <!--
+        jQuery.noConflict();
+        
+        // Use jQuery via jQuery(...)
+        jQuery(document).ready(function(){
+          jQuery("div#jQuery").css("font-weight","bold");
+        });
+        
+        // Use Prototype with $(...), etc.
+        document.observe("dom:loaded", function() {
+            $('prototype').setStyle({
+               fontSize: '10px'
+            });
+        });
+    //-->
+   </script>
+
+</head>
+<body>
+    <div id="jQuery">Hello I am a jQuery div</div>
+    <div id="prototype">Hello I am a Prototype div</div>
+</body>
+</html>

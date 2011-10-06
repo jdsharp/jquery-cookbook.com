@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>What's wrong with $(this)? - jQuery Cookbook</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en-us" />
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js">',
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<style type="text/css">
+		.reveal { display:none; }
+	</style>
+	
+	<script type="text/javascript">
+		
+		// Iterate over an array (typically a jQuery object, but can
+		// be any array) and call a callback function for each
+		// element, with a time delay between each of the callbacks.
+		// The callback receives the same arguments as an ordinary
+		// jQuery.each() callback.
+		jQuery.slowEach = function( array, interval, callback ) {
+			if( ! array.length ) return;
+			var i = 0;
+			next();
+			
+			function next() {
+				if( callback.call( array[i], i, array[i] ) !== false )
+					if( ++i < array.length )
+						setTimeout( next, interval );
+			}
+			
+			return array;
+		};
+		
+		// Iterate over "this" (a jQuery object) and call a callback
+		// function for each element, with a time delay between each
+		// of the callbacks.
+		// The callback receives the same arguments as an ordinary
+		// jQuery(...).each() callback.
+		jQuery.fn.slowEach = function( interval, callback ) {
+			return jQuery.slowEach( this, interval, callback );
+		};
+		
+		// Iterate over an array or jQuery object in reverse order
+		jQuery.reverseEach = function( array, callback ) {
+			for( var value, i = array.length;  --i >= 0; ) {
+				var value = array[i];
+				if( callback.call( value, i, value ) === false ) break;
+			}
+			return array;
+		};
+		
+		// Iterate over "this" (a jQuery object) in reverse order
+		jQuery.fn.reverseEach = function( callback ) {
+			return jQuery.reverseEach( this, callback );
+ 		};
+		
+		$(document).ready( function() {
+			
+			$('#simpleShow .clicker').click( function() {
+				$('#simpleShow .reveal').show();
+				return false;
+			});
+			
+			$('#simpleEach .clicker').click( function() {
+				$('#simpleEach .reveal').each( function() {
+					$(this).show();
+				});
+				return false;
+			});
+			
+			$('#slowEach .clicker').click( function() {
+				$('#slowEach .reveal').hide().slowEach( 500, function() {
+					$(this).show();
+				});
+				return false;
+			});
+			
+			$('#reverseEach .clicker').click( function() {
+				$('#reverseEach .reveal').reverseEach( function() {
+					$(this).appendTo('#reverseEach').show();
+				});
+				return false;
+			});
+			
+			$('#reset').click( function() {
+				$('.reveal').hide();
+				return false;
+			});
+			
+		});
+		
+	</script>
+
+</head>
+<body style="">
+	
+	<div style="margin:8px;" id="simpleShow">
+		<a href="#" class="clicker">Test .show():</a>
+		<span class="reveal">Ready? </span>
+		<span class="reveal">On your mark! </span>
+		<span class="reveal">Get set! </span>
+		<span class="reveal">Go! </span>
+	</div>
+	
+	<div style="margin:8px;" id="simpleEach">
+		<a href="#" class="clicker">Test .each():</a>
+		<span class="reveal">Ready? </span>
+		<span class="reveal">On your mark! </span>
+		<span class="reveal">Get set! </span>
+		<span class="reveal">Go! </span>
+	</div>
+	
+	<div style="margin:8px;" id="slowEach">
+		<a href="#" class="clicker">Test .slowEach():</a>
+		<span class="reveal">Ready? </span>
+		<span class="reveal">On your mark! </span>
+		<span class="reveal">Get set! </span>
+		<span class="reveal">Go! </span>
+	</div>
+	
+	<div style="margin:8px;" id="reverseEach">
+		<a href="#" class="clicker">Test .reverseEach():</a>
+		<span class="reveal">Ready? </span>
+		<span class="reveal">On your mark! </span>
+		<span class="reveal">Get set! </span>
+		<span class="reveal">Go! </span>
+	</div>
+	
+	<div style="margin:8px;">
+		<a href="#" id="reset">Hide All</a>
+	</div>
+	
+</body>
+</html>

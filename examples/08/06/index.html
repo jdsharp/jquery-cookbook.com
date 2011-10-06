@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jQuery Cookbook - Ch.08 - Getting notified when jQuery methods are called</title>
+	<link rel="stylesheet" type="text/css" href="../../common.css" />
+	<script type="text/javascript" src="../../jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="../jquery.log.js"></script>
+	<script type="text/javascript" src="jquery.broadcast.js"></script>
+</head>
+<body>
+	<h1>Getting notified when jQuery methods are called</h1>
+	<script type="text/javascript">
+	jQuery.broadcast('attr');
+	
+	jQuery('body')
+		.bind('before-attr', function(e){
+			jQuery.log('jQuery.fn.attr > changing', e.args[1], 'for baz for', this);
+			e.args[1] = 'baz';			
+		})
+		.bind('after-attr', function(e){
+			jQuery.log('jQuery.fn.attr > setting', e.args[0], '=', e.args[1], 'on', this);
+			e.ret = e.args[0] + e.args[1];
+		});
+	
+	jQuery.log("calling jQuery('body').attr('foo','bar')");
+	var ret = jQuery('body').attr('foo','bar');
+	jQuery.log("jQuery('body').attr('foo','bar') returned ", ret);
+	</script>
+</div>
+</body>
+</html>

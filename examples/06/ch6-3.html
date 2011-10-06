@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Chapter 6 - Recipe 3</title>
+<link rel="stylesheet" href="chapter6.css" type="text/css">
+<style type="text/css">
+  .box {
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #accordionWrapper {
+    margin: 10px;
+  }
+  
+  #accordionWrapper h3 a {
+    text-indent: -9999px;
+    height: 150px;
+    width: 50px;
+    float: left;
+  }
+
+  #accordionWrapper .red {
+    background: #c00 url(images/red.png) no-repeat;
+  }
+
+  #accordionWrapper .green {
+    background: #0c0 url(images/green.png) no-repeat;
+  }
+
+  #accordionWrapper .blue {
+    background: #00c url(images/blue.png) no-repeat;
+  }
+  
+  #accordionWrapper div.box {
+    float: left;
+    height: 150px;
+    width: 150px;
+    border: 0;
+    margin: 0;
+    background-image: none;
+  }
+</style>
+
+<script src="jquery-latest.js" type="text/javascript"></script>
+<script type="text/javascript">
+$.fn.horizontalAccordion = function (speed) {
+	return this.each(function () {
+		var $accordionHeaders = $(this).find('h3'),
+	    $open = $accordionHeaders.next().filter(':first'),
+	    width = $open.outerWidth();
+	    
+	  // initialise the display
+	  $accordionHeaders.next().filter(':not(:first)').css({ display : 'none', width : 0 });
+
+	  $accordionHeaders.click(function () {
+	    if ($open.prev().get(0) == this) {
+	      return;
+	    }
+
+	    $open.animate({ width: 0 }, { duration : speed });
+	    $open = $(this).next().animate({ width : width }, { duration : speed });
+	  })
+	});
+};
+
+$(document).ready(function () {
+	$('#accordionWrapper').horizontalAccordion(200);
+});
+</script>
+</head>
+<body id="single">
+  <h2>Creating a horizontal accordion</h2>
+  <div id="accordionWrapper">
+    <h3 class="red"><a href="#red">Red</a></h3>
+    <div id="red" class="red box"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
+    <h3 class="green"><a href="#green">Green</a></h3>
+    <div id="green" class="green box"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
+    <h3 class="blue"><a href="#blue">Blue</a></h3>
+    <div id="blue" class="blue box"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
+  </div>
+</body>
+</html>

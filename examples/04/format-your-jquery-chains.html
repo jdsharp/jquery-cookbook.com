@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en-us" />
+	<title>Format Your jQuery Chains - jQuery Cookbook</title>
+	
+	<style type="text/css">
+		.contentBox {
+			border: 1px solid #333;
+			width: 600px;
+		}
+		.contentTitle {
+			font-size: 1.5em;
+			margin: 0;
+			padding: 5px;
+			text-align: center;
+		}
+		.contentBody {
+			border-top: 1px solid #333;
+			padding: 5px;
+		}
+		.contentFooter {
+			background-color: #ccc;
+			border-top: 1px solid #333;
+			padding: 5px;
+		}
+	</style>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js">',
+	</script>
+	
+	<script type="text/javascript">
+	
+		$(document).ready(function() {
+			$('#box')
+				.addClass('contentBox')
+				.children(':header')
+					.addClass('contentTitle')
+					.click(function() {
+						$(this).siblings('.contentBody').toggle();
+					})
+				.end()
+				.children(':not(.contentTitle)')
+					.addClass('contentBody')
+				.end()
+				.append('<div class="contentFooter"></div>')
+				.children('.contentFooter')
+					.text('generated content');
+		});
+	
+	</script>
+</head>
+<body>
+
+<div id="box">
+	<h1>Click here to expand or collapse</h1>
+	<div>
+		<p>write less</p>
+		<p>do more</p>
+	</div>
+</div>
+
+</body>
+</html>

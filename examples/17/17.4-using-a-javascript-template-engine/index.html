@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>jQuery Cookbook - 17.4 Using a Javascript Template Engine</title>
+    <link rel="stylesheet" type="text/css" href="../../common.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <style>
+      .hidden { display: none }
+      </style>
+    <script type="text/javascript" src="../../jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="pure.js"></script>
+    <script type="text/javascript" src="solution.js"></script>
+  </head>
+  <body>
+    <h1>17.4 - Using a Javascript Template Engine</h1>
+    <input type="button" id="add-book" value="Add book"></input>
+    <input type="button" id="clear-list" value="Clear booklist"></input>
+    <div id="book-list"></div>
+
+    <div id="book-template" class=" hidden book">
+      <ul class="author-list"><li class="author"><span class="name"></span></li></ul>
+      <p class="title"></p>
+      <p class="year"></p>
+      <div class='book-footer'>
+	<div class="rating-div">Rating: <span class="rating"></span></div>
+	<div>Location: <span class="location"></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+
+

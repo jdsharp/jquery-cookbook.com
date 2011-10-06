@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>13.5 - Creating your very own jQuery UI plugin defaults</title>
+	<link rel="stylesheet" type="text/css" href="../common.css" />
+	<link rel="stylesheet" type="text/css" href="13.css" />
+
+	<link rel="stylesheet" type="text/css" href="themes/base/jquery-ui.css" />
+	<script type="text/javascript" src="../jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="ui/jquery-ui.js"></script>
+
+	<script type="text/javascript">
+	$(function() {
+		$.extend($.ui.dialog.defaults, {
+		    height: 300,
+		    width: 400,
+		    draggable: false,
+		    modal: true,
+		    buttons: {
+		        'OK': function(event, ui) {
+		            $(this).dialog('close');
+		        }
+		    }
+		});
+
+		$('#msg').dialog();
+
+		$('#note').dialog();
+	});
+	</script>
+</head>
+<body>
+	<h1>13.5 - Creating your very own jQuery UI plugin defaults</h1>
+	<dl>
+		<dt>Dialog with custom defaults</dt>
+		<dd>
+			<div id="msg" title="Dialog Title">
+				<p>#msg</p>
+			</div>
+			<div id="note" title="Dialog Title">
+				<p>#note</p>
+			</div>
+		</dd>
+	</dl>
+</body>
+</html>

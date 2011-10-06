@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<link rel="stylesheet" href="ui.core.css" />
+    	<link rel="stylesheet" href="ui.slider.css" />
+    	<link rel="stylesheet" href="ui.theme.css" />
+        <script src="../../jquery-1.3.2.min.js"></script>
+        <script src="ui.core.js"></script>
+        <script src="ui.slider.js"></script>
+        <script>
+            jQuery(document).ready(function($){
+                var slider = $("#slider-range").slider({
+				    range: true,
+				    min: 0,
+				    max: 500,
+				    values: [75, 300],
+				    slide: function(event, ui) {
+				        $("#amount").val('$' + ui.values[0] + ' - $' + ui.values[1]);
+				    }
+				});
+				$("#amount").val('$' + slider.slider("values", 0) + ' - $' + slider.slider("values", 1));
+            });
+        </script>
+    </head>
+    <body>
+        <form>
+            <p>
+			    <label for="amount">Price range:</label>
+			    <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" />
+			</p>
+			
+			<div id="slider-range"></div>
+        </form>
+    </body>
+</html>

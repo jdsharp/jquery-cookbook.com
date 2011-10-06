@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>13.1 - Including the entire jQuery UI suite</title>
+	<link rel="stylesheet" type="text/css" href="../common.css" />
+	<link rel="stylesheet" type="text/css" href="13.css" />
+
+	<link rel="stylesheet" type="text/css" href="themes/base/jquery-ui.css" />
+	<script type="text/javascript" src="../jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="ui/jquery-ui.js"></script>
+
+	<script type="text/javascript">
+	$(function() {
+
+		$('#accordion').accordion();
+		
+		$('#datepicker').datepicker();
+		
+		$('#dialog').dialog({ resizable: false, draggable: false, beforeclose: function() { return false; } }).parents('.ui-dialog').css({ position: 'relative', top: 0, left: 0}).appendTo('#dlg');
+		
+		$('#progressbar').progressbar({ value: 37 });
+		
+		$('#slider').slider({ range: true, values: [37, 73] });
+		
+		$('#tabs').tabs();
+		
+	});
+	</script>
+
+</head>
+<body>
+	<h1>13.1 - Including the entire jQuery UI suite</h1>
+	<dl>
+		<dt>Accordion</dt>
+		<dd>
+			<div id="accordion">
+				<h3><a href="#">First</a></h3>
+				<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				<h3><a href="#">Second</a></h3>
+				<div>Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
+				<h3><a href="#">Third</a></h3>
+				<div>Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+			</div>
+		</dd>
+		<dt>Datepicker</dt>
+		<dd>
+			<div id="datepicker"></div>
+		</dd>
+		<dt>Dialog</dt>
+		<dd id="dlg">
+			<div id="dialog" title="Dialog Title">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+		</dd>
+		<dt>Progressbar</dt>
+		<dd>
+			<div id="progressbar"></div>
+		</dd>
+		<dt>Slider</dt>
+		<dd>
+			<div id="slider"></div>
+		</dd>
+		<dt>Tabs</dt>
+		<dd>
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1">First</a></li>
+					<li><a href="#tabs-2">Second</a></li>
+					<li><a href="#tabs-3">Third</a></li>
+				</ul>
+				<div id="tabs-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				<div id="tabs-2">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
+				<div id="tabs-3">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+			</div>
+		</dd>
+	</dl>
+
+	<div id="themeswitcher" style="position:absolute;top:10px;right:10px;"></div>
+	<script src="http://jqueryui.com/themeroller/themeswitchertool/"></script>
+	<script>$.fn.themeswitcher && $('#themeswitcher').themeswitcher();</script>
+
+</body>
+</html>

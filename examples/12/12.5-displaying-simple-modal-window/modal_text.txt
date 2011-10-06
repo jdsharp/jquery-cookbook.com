@@ -1,0 +1,6 @@
+﻿<p>
+	<strong>I was loaded from a *.txt file.</strong>
+</p>
+<p>
+	Ut vel enim. Nunc tortor. Mauris pellentesque suscipit metus. Vestibulum consectetur. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Sed sit amet leo. In hac habitasse platea dictumst. Etiam sollicitudin nisl vel lacus. Pellentesque urna. Suspendisse nulla. Ut vel enim. Nunc tortor. Mauris pellentesque suscipit metus. Vestibulum consectetur. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Sed sit amet leo. In hac habitasse platea dictumst. Etiam sollicitudin nisl vel lacus. Pellentesque urna. Suspendisse nulla.
+</p>

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jQuery Cookbook - Ch.08 - Document ready for dynamically loaded jQuery</title>
+	<link rel="stylesheet" type="text/css" href="../../common.css" />
+</head>
+<body>
+	<h1>Document ready for dynamically loaded jQuery</h1>
+
+	<script type="text/javascript">
+	function addScript(data){
+		var inline = data.indexOf('.js') == -1,
+			script = document.createElement('script');
+
+		script.type = 'text/javascript';
+		
+		if(inline){
+			try{ 
+				script.appendChild(document.createTextNode(data));
+			}catch(e){}
+			script.text = data;
+		}else{
+			script.src = data;
+		}
+		
+		document.body.appendChild(script);
+	}
+	
+	function log(msg){
+		var li = document.createElement('li');
+		li.appendChild(document.createTextNode(msg));
+		
+		var logs = document.getElementById('logs');
+		if (!logs){
+			logs = document.createElement('ul');
+			logs.id = 'logs';
+			document.body.appendChild(logs);
+		}
+		
+		logs.appendChild(li);
+	}
+	
+	log('Will load jQuery after in a second');
+	
+	setTimeout(function(){
+		log('Loading jQuery...');
+		addScript("../../jquery-1.3.2.min.js");
+		log('Loading jQuery bindings');
+		log('You should get two additional logs in a few seconds');
+		addScript("try-document.ready.js");
+		// Without this last line, the handlers won't be executed
+		addScript("jQuery.ready();");
+	}, 1000 );
+	</script>
+</div>
+</body>
+</html>

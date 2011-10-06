@@ -1,0 +1,571 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="imagetoolbar" content="false" />
+<title>jQuery Cookbook - Ch.12 - Navigating a File Tree Expander</title>
+<link rel="stylesheet" type="text/css" href="../_common/basic.css" />
+<link rel="stylesheet" type="text/css" href="tree.css" />
+<script type="text/javascript">
+/* <![CDATA[ */
+document.write('<link rel="stylesheet" type="text/css" href="preload.css" />');
+/* ]]> */
+</script>
+<script type="text/javascript" src="../_common/jquery.js"></script>
+<script type="text/javascript" src="tree.js"></script>
+</head>
+<body>
+<div id="container">
+	<p class="tree_controls">
+		<a href="#" class="expand_all">Expand all</a> ~ <a href="#" class="collapse_all">Collapse all</a>
+	</p>
+	<ul class="tree">
+		<li>
+			<a href="#" class="tree_trigger">&nbsp;</a> Primary
+			<ul class="tree_expanded">
+				<li>
+					<a href="#" class="tree_trigger">&nbsp;</a> Secondary
+					<ul class="tree_expanded">
+						<li>
+							<a href="#" class="tree_trigger">&nbsp;</a> Tertiary
+							<ul>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" class="tree_trigger">&nbsp;</a> Primary
+			<ul>
+				<li>
+					<a href="#" class="tree_trigger">&nbsp;</a> Secondary
+					<ul>
+						<li>
+							<a href="#" class="tree_trigger">&nbsp;</a> Tertiary
+							<ul>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" class="tree_trigger">&nbsp;</a> Primary
+			<ul>
+				<li>
+					<a href="#" class="tree_trigger">&nbsp;</a> Secondary
+					<ul>
+						<li>
+							<a href="#" class="tree_trigger">&nbsp;</a> Tertiary
+							<ul>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" class="tree_trigger">&nbsp;</a> Primary
+			<ul>
+				<li>
+					<a href="#" class="tree_trigger">&nbsp;</a> Secondary
+					<ul>
+						<li>
+							<a href="#" class="tree_trigger">&nbsp;</a> Tertiary
+							<ul>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" class="tree_trigger">&nbsp;</a> Primary
+			<ul>
+				<li>
+					<a href="#" class="tree_trigger">&nbsp;</a> Secondary
+					<ul>
+						<li>
+							<a href="#" class="tree_trigger">&nbsp;</a> Tertiary
+							<ul>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p class="tree_controls">
+		<a href="#" class="expand_all">Expand all</a> ~ <a href="#" class="collapse_all">Collapse all</a>
+	</p>
+	<ul class="tree">
+		<li>
+			<a href="#" class="tree_trigger">&nbsp;</a> Primary
+			<ul>
+				<li>
+					<a href="#" class="tree_trigger">&nbsp;</a> Secondary
+					<ul>
+						<li>
+							<a href="#" class="tree_trigger">&nbsp;</a> Tertiary
+							<ul>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" class="tree_trigger">&nbsp;</a> Primary
+			<ul>
+				<li>
+					<a href="#" class="tree_trigger">&nbsp;</a> Secondary
+					<ul>
+						<li>
+							<a href="#" class="tree_trigger">&nbsp;</a> Tertiary
+							<ul>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" class="tree_trigger">&nbsp;</a> Primary
+			<ul>
+				<li>
+					<a href="#" class="tree_trigger">&nbsp;</a> Secondary
+					<ul>
+						<li>
+							<a href="#" class="tree_trigger">&nbsp;</a> Tertiary
+							<ul>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" class="tree_trigger">&nbsp;</a> Primary
+			<ul>
+				<li>
+					<a href="#" class="tree_trigger">&nbsp;</a> Secondary
+					<ul>
+						<li>
+							<a href="#" class="tree_trigger">&nbsp;</a> Tertiary
+							<ul>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" class="tree_trigger">&nbsp;</a> Primary
+			<ul>
+				<li>
+					<a href="#" class="tree_trigger">&nbsp;</a> Secondary
+					<ul>
+						<li>
+							<a href="#" class="tree_trigger">&nbsp;</a> Tertiary
+							<ul>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+								<li>
+									<span class="tree_slug">&nbsp;</span> Quaternary
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+						<li>
+							<span class="tree_slug">&nbsp;</span> Tertiary
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+				<li>
+					<span class="tree_slug">&nbsp;</span> Secondary
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+</body>
+</html>

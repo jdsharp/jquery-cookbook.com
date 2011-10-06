@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jQuery Cookbook - Ch.08 - Listener plugin</title>
+	<link rel="stylesheet" type="text/css" href="../../common.css" />
+	<script type="text/javascript" src="../../jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="../jquery.log.js"></script>
+	<script type="text/javascript" src="jquery.listener.js"></script>
+</head>
+<body>
+	<h1>Listener plugin</h1>
+
+	<script type="text/javascript">
+	$.page = $.listener({
+		title: 'None',
+		changeTo: function( title ){
+			this.title = title;
+			this.trigger('change', title);
+		}
+	});
+	
+	$.page.bind('change', function(e){
+		jQuery.log('Changing to page', this.title);
+	});
+	
+	$.page.changeTo('Inbox');
+	
+	setTimeout(function(){
+		$.page.changeTo('Spam');
+	}, 2000 );
+	</script>
+</div>
+</body>
+</html>

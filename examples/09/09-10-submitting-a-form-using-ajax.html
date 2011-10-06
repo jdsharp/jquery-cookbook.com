@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="imagetoolbar" content="false" />
+	<title>jQuery Cookbook - Ch.09.10 - Submitting a form using ajax</title>
+
+	<!-- NOT REQUIRED. Just making things look prettier. -->
+	<link rel="stylesheet" type="text/css" href="basic.css" />
+
+	<!-- NOT REQUIRED. Just making things look prettier. -->
+	<style type="text/css" title="text/css">
+		form {
+			padding: 1em 0;
+		}
+		div#result {
+			padding: 1em 2em;
+			color: #696;
+			font-weight: bold;
+		}
+	</style>
+
+	<!-- REQUIRED -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
+	<!-- REQUIRED -->
+	<script type="text/javascript">
+		// when the HTML DOM is ready
+		$(document).ready(function(){
+
+			// find the form and hijack the submit event
+			$('form').submit(function(event){
+				
+				// we want to submit the form using AJAX (prevent page refresh)
+				event.preventDefault();
+			
+				// this is where your validation code (if any) would go
+				// ...
+			
+				// this tells the server-side process that AJAX was used
+				$('input[name="usingAJAX"]',this).val( 'true' );
+				
+				// store reference to the form
+				var $form = $(this);
+				
+				// grab the url from the form element
+				var url = $form.attr('action');
+				
+				// prepare the form data to send
+				var dataToSend = $form.serialize();
+				
+				// the callback function that tells us what the server-side process had to say
+				var callback = function(dataReceived){
+					
+					// hide the form (thankfully we stored a reference to it)
+					$form.hide();
+					
+					// in our case the server returned an HTML snippet so just append it to the DOM
+					// expecting: <div id="result">Your favorite food is pizza! Thanks for telling us!</div>
+					$('body').append(dataReceived)
+				};
+				
+				// type of data to receive (in our case we're expecting an HTML snippet)
+				var typeOfDataToReceive = 'html';
+			
+				// now send the form and wait to hear back
+				$.get( url, dataToSend, callback, typeOfDataToReceive )
+				
+			}); // close .submit()
+
+		}); // close ready()
+	</script>
+</head>
+<body>
+
+<div id="container">
+	<h1>Submitting a form using AJAX</h1>
+
+	<form action="09-10-submitting-a-form-using-ajax.process.html">
+
+		<!-- value changed via JavaScript -->
+		<input type="hidden" name="usingAJAX" value="false" />
+
+		<label for="favoriteFood">What is your favorite food?</label>
+		<input type="text" name="favoriteFood" id="favoriteFood" />
+
+		<input type="submit" value="Tell Us" />
+
+	</form>
+
+</div>
+
+</body>
+</html>

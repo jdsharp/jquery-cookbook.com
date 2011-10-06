@@ -1,0 +1,57 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Chapter 2 - Recipe 2 - Reduce the selection set to specified item</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
+    <script type="text/javascript">
+        (function($){
+            $(document).ready(function(){
+                $("ol#east > li").eq(7).css("border-bottom", "1px solid #000000");
+                $("ol#west > li").eq(7).css("border-bottom", "1px solid #000000");
+            });
+        })(jQuery);
+    </script>
+</head>
+<body>
+    <h2>Eastern Conference</h2>
+    <ol id="east">
+        <li>Boston Bruins</li>
+        <li>Washington Capitals</li>
+        <li>New Jersey Devils</li>
+        <li>Pittsburgh Penguins</li>
+        <li>Philadephia Flyers</li>
+        <li>Carolina Hurricanes</li>
+        <li>New York Rangers</li>
+        <li>Montreal Canadians</li>
+        <li>Florida Panthers</li>
+        <li>Buffalo Sabres</li>
+        <li>Ottawa Senators</li>
+        <li>Toronto Maple Leafs</li>
+        <li>Atlanta Thrashers</li>
+        <li>Tampa Bay</li>
+        <li>New York Islanders</li>
+    </ol>
+    
+    <h2>Western Conference</h2>
+    <ol id="west">
+        <li>San Jose Sharks</li>
+        <li>Detroit Red Wings</li>
+        <li>Vancouver Canucks</li>
+        <li>Chicago Blackhawks</li>
+        <li>Calgary Flames</li>
+        <li>St. Louis Blues</li>
+        <li>Columbus Blue Jackets</li>
+        <li>Anaheim Ducks</li>
+        <li>Minnesota Wild</li>
+        <li>Nashville Predators</li>
+        <li>Edmonton Oilers</li>
+        <li>Dallas Stars</li>
+        <li>Phoenix Coyotes</li>
+        <li>Los Angeles Kings</li>
+        <li>Colorado Avalanche</li>
+    </ol>
+</body>
+</html>
