@@ -5,8 +5,8 @@ function lookup($key) {
 	foreach (file('urls.txt') as $line_num => $line) {
 		$line = trim($line);
 		$eq   = strpos('=', $line);
-		$k    = substr($key, 0, $eq);
-		$v    = substr($key, $eq+1);
+		$k    = substr($line, 0, $eq);
+		$v    = substr($line, $eq+1);
 
     	if ($k == $key) {
     		return $v;
